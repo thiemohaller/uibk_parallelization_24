@@ -12,7 +12,10 @@ const double eps = 1.e-8;
 
 class TestLimiter : public ::testing::Test {
 protected:
-	virtual void SetUp() { ptr_physics = std::make_unique<physics>(); }
+	virtual void SetUp() { 
+		std::cout << "Running test...\n";
+		ptr_physics = std::make_unique<physics>(); 
+	}
 	virtual void TearDown() {}
 
 	std::unique_ptr<physics> ptr_physics;
