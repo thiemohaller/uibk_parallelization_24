@@ -112,6 +112,7 @@ double physics::get_sound_speed(double density, double pressure) {
 	// https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_(OpenStax)/Book%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/17%3A_Sound/17.03%3A_Speed_of_Sound
 	// Kinetic Theiry of Ideal Gases
 	// https://en.wikipedia.org/wiki/Speed_of_sound -> Speed of sound in ideal gases and air
+	// luft 1.4, gas 5/3 -> temperature is constant?
 	double c = sqrt(adiabatic_index * pressure / density);
 	return c;
 }
