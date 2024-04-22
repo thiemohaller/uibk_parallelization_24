@@ -132,33 +132,43 @@ double physics::get_lambda_abs_max(const fluid_cell &fluid) {
 	return lambda_abs_max;
 }
 
+// https://en.wikipedia.org/wiki/Flux
+// * does this basically check how fast the fluids flow in the indicated direction in the fluid cells?
+// * is this the "jump" from the sketch?
 void physics::get_lambda_min_max(double &lambda_min, double &lambda_max, const fluid_cell &fluid_left_cell, const fluid_cell &fluid_right_cell,
                                  const parallelisation::direction &local_direction) {
 
+	// what does is_conservative mean?
+	// * it means that the fluid cell is in conservative form, which means that the fluid data is in the form of density, momentum and energy
 	assert(!fluid_left_cell.is_conservative());
 	assert(!fluid_right_cell.is_conservative());
 
 	int index_density = fluid_left_cell.get_index_density();
+
+	// use x velocity as default if no direction is given
 	int index_velocity_parallel = fluid_left_cell.get_index_v_x();
 	if (local_direction == parallelisation::direction::y) {
-		// TBD by students
-		
+		index_velocity_parallel = fluid_left_cell.get_index_v_y();
 	} else if (local_direction == parallelisation::direction::z) {
-		// TBD by students
+		index_velocity_parallel = fluid_left_cell.get_index_v_z();
 	}
 
-	double density_left = 42.0;  // TBD by students
-	double density_right = 42.0; // TBD by students
+	double density_left = fluid_left_cell.fluid_data[index_density];
+	double density_right = fluid_right_cell.fluid_data[index_density];
 
 	double v_parallel_left = fluid_left_cell.fluid_data[index_velocity_parallel];
-	double v_parallel_right = 42.0; // TBD by students
+	double v_parallel_right = fluid_right_cell.fluid_data[index_velocity_parallel];
 
 	double pressure_left = get_pressure(fluid_left_cell);
-	double pressure_right = 42.0; // TBD by students
+	double pressure_right = get_pressure(fluid_right_cell);
 
 	double sound_speed_left = get_sound_speed(density_left, pressure_left);
-	double sound_speed_right = 42.0; // TBD by students
+	double sound_speed_right = get_sound_speed(density_right, pressure_right);
 
+	// what does lambda tell us?
+	// lambda tells us the speed of the wave, which is the speed of the fluid
+	// lambda_max is the maximum speed of the fluid
+	// lambda_min is the minimum speed of the fluid
 	lambda_max = std::max(v_parallel_left + sound_speed_left, v_parallel_right + sound_speed_right);
-	lambda_min = 42.0; // TBD by students
+	lambda_min = std::min(v_parallel_left - sound_speed_left, v_parallel_right - sound_speed_right);
 }
