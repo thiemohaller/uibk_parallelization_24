@@ -4,21 +4,26 @@ from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 import numpy as np
+import os
 
-
-path_data = "/put/your/path/here/code/build"
-
+path_data = "/scratch/cb761148/uibk_parallelization_24/code_students/build"
 
 class plane_type(Enum) :
     xy = 1
     xz = 2
     yz = 3
 
+def get_latest_file(directory) :
+    files_in_dir_ending_with_h5 = [f for f in os.listdir(directory) if f.endswith(".h5")]
+    # files_in_dir_ending_with_h5.sort()
+    print(files_in_dir_ending_with_h5)
+    latest_file = files_in_dir_ending_with_h5[-1]
+    return latest_file
+
 class data_reader :
     def __init__(self, file_name) :
         self.file_name = file_name
         self.open_file(file_name)
-        
         
     def open_file(self,file_name) :
         self.h5_file = h5py.File(file_name)
@@ -93,7 +98,6 @@ class data_plotter() :
         fig.savefig(output_name)
         
     def plot_3D(data_xy, x_grid, y_grid, output_name) :
-        
         #fig = plt.figure()
         fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
         #ax = plt.figure().add_subplot(111, projection='3d')
@@ -111,7 +115,6 @@ class data_plotter() :
         
         fig.savefig(output_name)
         
-        
     def plot_3D_projected(data_xy, data_xz, data_yz, x_grid, y_grid, z_grid,
                           x_left, y_left, z_left, output_name) :
         
@@ -119,8 +122,6 @@ class data_plotter() :
         ax = fig.add_subplot(111, projection='3d')
 
         cmap = plt.cm.plasma
-        
-        
         
         x_plot_xy, y_plot_xy = np.meshgrid(x_grid, y_grid)
         x_plot_xz, z_plot_xz = np.meshgrid(x_grid, z_grid)
@@ -132,7 +133,6 @@ class data_plotter() :
         z_min = z_left[0]
         
         #ax = plt.axes(projection='3d')
-        
         
         cset = ax.contourf(x_plot_xy, y_plot_xy, data_xy,
                            zdir='z', offset=x_min, cmap=plt.cm.coolwarm,zorder=-1)
@@ -147,7 +147,7 @@ class data_plotter() :
         ax.azim = 30
         ax.elev = 20
         
-        ax.set_aspect('equal')
+        ax.set_aspect('auto')
         ax.set_box_aspect([1,1,1])
         
         ax.set_xlim([np.min(x_grid), np.max(x_grid)])
@@ -164,7 +164,7 @@ class data_plotter() :
         fig.savefig(output_name)
 
 def analysis_single_plane() :
-    file_name = "output_step140.h5"
+    file_name = get_latest_file(path_data)
     full_name = path_data + "/" + file_name;
     my_reader = data_reader(full_name)
     
@@ -186,7 +186,7 @@ def analysis_single_plane() :
 
 def analysis_3D() :
     # Here we do a joint plot of all 3 midplanes
-    file_name = "output_step140.h5"
+    file_name = get_latest_file(path_data)
     full_name = path_data + "/" + file_name;
     my_reader = data_reader(full_name)    
     
@@ -200,17 +200,14 @@ def analysis_3D() :
     x_grid_cen = my_reader.get_x_grid_cen()
     y_grid_cen = my_reader.get_y_grid_cen()
     
-    
-    
     plotter = data_plotter
     #plotter.plot_3D_slices(data_2D_xy, data_2D_xz, data_2D_yz,
     #                       x_grid, y_grid, z_grid, "plot_3D")
     plotter.plot_3D(data_2D_xy, x_grid_cen, y_grid_cen, "plot_3D")
     
-    
 def analysis_3D_projected() :
     # Here we do a joint plot of all 3 midplanes
-    file_name = "output_step140.h5"
+    file_name = get_latest_file(path_data)
     full_name = path_data + "/" + file_name;
     my_reader = data_reader(full_name)    
     
@@ -232,8 +229,6 @@ def analysis_3D_projected() :
     x_grid_cen = my_reader.get_x_grid_cen()
     data_2D_xy = my_reader.get_data_plane("Density",plane_type.xy, i_mid_z)
     
-    
-    
     plotter = data_plotter
     #plotter.plot_3D_slices(data_2D_xy, data_2D_xz, data_2D_yz,
     #                       x_grid, y_grid, z_grid, "plot_3D")
@@ -243,5 +238,5 @@ def analysis_3D_projected() :
             
 if __name__ == "__main__" :
     analysis_single_plane()
-    #analysis_3D()
-    #analysis_3D_projected()
+    analysis_3D()
+    analysis_3D_projected()
