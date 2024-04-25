@@ -15,6 +15,10 @@ void RungeKutta2::save_data(const fluid &fluid3D) {
 
 void RungeKutta2::do_sub_step(const grid_3D &grid, const fluid &changes, fluid &fluid3D, double delta_t, int sub_step) {
 
+	// grid is the grid_3D object that contains the grid information
+	// changes is the fluid object that contains the changes in the fluid data
+	// fluid3D is the fluid object that contains the fluid data (q)
+	// delta_t is the time step
 	int num_fields = fluid3D.get_num_fields();
 
 	std::cout << " Doing Runge-Kutta step " << sub_step << "\n";
@@ -24,13 +28,23 @@ void RungeKutta2::do_sub_step(const grid_3D &grid, const fluid &changes, fluid &
 
 	for (int i_field = 0; i_field < num_fields; ++i_field) {
 		if (sub_step == 0) {
-
-			// TBD by students -> do first Runge-Kutta step
-
+			for (int ix = 0; ix < grid.get_num_cells(0); ++ix) {
+				for (int iy = 0; iy < grid.get_num_cells(1); ++iy) {
+					for (int iz = 0; iz < grid.get_num_cells(2); ++iz) {
+						fluid3D.fluid_data[i_field](ix, iy, iz) = 
+							fluid3D.fluid_data[i_field](ix, iy, iz) + delta_t * changes.fluid_data[i_field](ix, iy, iz);
+					}
+				}
+			}
 		} else if (sub_step == 1) {
-
-			// TBD by students -> do second Runge-Kutta step
-
+			for (int ix = 0; ix < grid.get_num_cells(0); ++ix) {
+				for (int iy = 0; iy < grid.get_num_cells(1); ++iy) {
+					for (int iz = 0; iz < grid.get_num_cells(2); ++iz) {
+						fluid3D.fluid_data[i_field](ix, iy, iz) = 0.5 * (fluid_storage.fluid_data[i_field](ix, iy, iz) + fluid3D.fluid_data[i_field](ix, iy, iz))
+							+ 0.5 * delta_t * changes.fluid_data[i_field](ix, iy, iz);
+					}
+				}
+			}
 		} else {
 			std::cerr << " Error no such substep: " << sub_step << "\n";
 			exit(3);
