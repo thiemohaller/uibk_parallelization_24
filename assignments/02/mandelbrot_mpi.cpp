@@ -1,11 +1,12 @@
 #include <bits/chrono.h>
+#include <chrono>
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
-#include <chrono>
 #include <sys/time.h>
 #include <tuple>
 #include <vector>
+#include "mpi.h"
 
 // Include that allows to print result as an image
 // Also, ignore some warnings that pop up when compiling this as C++ mode
@@ -16,8 +17,8 @@
 #include "stb_image_write.h"
 #pragma GCC diagnostic push
 
-constexpr int default_size_x = 1280;
-constexpr int default_size_y = 720;
+constexpr int default_size_x = 1344;
+constexpr int default_size_y = 768;
 
 // RGB image will hold 3 color channels
 constexpr int num_channels = 3;
@@ -26,9 +27,7 @@ constexpr int max_iterations = 10000;
 
 #define IND(Y, X, SIZE_Y, SIZE_X, CHANNEL) (Y * SIZE_X * num_channels + X * num_channels + CHANNEL)
 
-size_t index(int y, int x, int /*size_y*/, int size_x, int channel) {
-	return y * size_x * num_channels + x * num_channels + channel;
-}
+size_t index(int y, int x, int /*size_y*/, int size_x, int channel) { return y * size_x * num_channels + x * num_channels + channel; }
 
 using Image = std::vector<uint8_t>;
 
@@ -65,21 +64,8 @@ auto HSVToRGB(double H, const double S, double V) {
 	return std::make_tuple(R, G, B);
 }
 
-void calcMandelbrot(Image &image, int size_x, int size_y) {
-
-	auto time_start = std::chrono::high_resolution_clock::now();
-	
-	const float left = -2.5, right = 1;
-	const float bottom = -1, top = 1;
-
-	// TODOs for MPI parallelization
-	// 1) domain decomposition
-	//   - decide how to split the image into multiple parts
-	//   - ensure every rank is computing its own part only
-	// 2) result aggregation
-	//   - aggregate the individual parts of the ranks into a single, complete image on the root rank (rank 0)
-
-	for (int pixel_y = 0; pixel_y < size_y; pixel_y++) {
+void caclMandelbrotRow(Image &image, int size_x, int size_y, int start_row, int end_row, float left, float right, float bottom, float top) {
+	for (int pixel_y = start_row; pixel_y < end_row; pixel_y++) {
 		// scale y pixel into mandelbrot coordinate system
 		const float cy = (pixel_y / (float)size_y) * (top - bottom) + bottom;
 		for (int pixel_x = 0; pixel_x < size_x; pixel_x++) {
@@ -109,15 +95,53 @@ void calcMandelbrot(Image &image, int size_x, int size_y) {
 			image[index(pixel_y, pixel_x, size_y, size_x, channel++)] = (uint8_t)(blue * UINT8_MAX);
 		}
 	}
-	
+}
+
+void calcMandelbrot(Image &image, int size_x, int size_y, int rank, int num_ranks) {
+	auto time_start = std::chrono::high_resolution_clock::now();
+
+	const float left = -2.5, right = 1;
+	const float bottom = -1, top = 1;
+
+	// TODOs for MPI parallelization
+	// 1) domain decomposition
+	//   - decide how to split the image into multiple parts
+	//   - ensure every rank is computing its own part only
+	// 2) result aggregation
+	//   - aggregate the individual parts of the ranks into a single, complete image on the root rank (rank 0)
+
+	// Determine the number of rows each rank will compute
+	int rows_per_rank = size_y / num_ranks;
+	// Determine the starting and ending rows for the current rank
+	int start_row = rank * rows_per_rank;
+	int end_row = start_row + rows_per_rank;
+
+	caclMandelbrotRow(image, size_x, size_y, start_row, end_row, left, right, bottom, top);
+	// Gather all the partial images from each rank to the root rank
+	std::vector<uint8_t> gathered_image;
+	if (rank == 0) {
+		gathered_image.resize(num_ranks * size_x * size_y * num_channels);
+	}
+	MPI_Gather(image.data(), image.size(), MPI_BYTE, gathered_image.data(), image.size(), MPI_UNSIGNED_CHAR, 0, MPI_COMM_WORLD);
+
+	// Save the gathered image on the root rank
+	if (rank == 0) {
+		constexpr int stride_bytes = 0;
+		stbi_write_png("mandelbrot_mpi.png", size_x, size_y * num_ranks, num_channels, gathered_image.data(), stride_bytes);
+	}
+
 	auto time_end = std::chrono::high_resolution_clock::now();
 	auto time_elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start).count();
-	
+
 	std::cout << "Mandelbrot set calculation for " << size_x << "x" << size_y << " took: " << time_elapsed << " ms." << std::endl;
 }
 
 int main(int argc, char **argv) {
-
+	MPI_Init(&argc, &argv);
+	int rank, num_ranks;
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	MPI_Comm_size(MPI_COMM_WORLD, &num_ranks);
+	
 	int size_x = default_size_x;
 	int size_y = default_size_y;
 
@@ -131,10 +155,11 @@ int main(int argc, char **argv) {
 
 	Image image(num_channels * size_x * size_y);
 
-	calcMandelbrot(image, size_x, size_y);
+	calcMandelbrot(image, size_x, size_y, 0, 5);
 
 	constexpr int stride_bytes = 0;
-	stbi_write_png("mandelbrot_seq.png", size_x, size_y, num_channels, image.data(), stride_bytes);
+	stbi_write_png("mandelbrot_mpi.png", size_x, size_y, num_channels, image.data(), stride_bytes);
+	MPI_Finalize();
 
 	return EXIT_SUCCESS;
 }
