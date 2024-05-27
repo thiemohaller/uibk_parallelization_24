@@ -1,2 +1,14 @@
 No arguments given, using default size 1344x768
-Mandelbrot set calculation for 1344x768 took: 3269 ms.
+Rank 0 is calculating 128 rows starting from 0 until 128
+Rank 1 is calculating 128 rows starting from 128 until 256
+Rank 2 is calculating 128 rows starting from 256 until 384
+Rank 3 is calculating 128 rows starting from 384 until 512
+Rank 5 is calculating 128 rows starting from 640 until 768
+Rank 4 is calculating 128 rows starting from 512 until 640
+Mandelbrot set calculation for Rank 0 took: 224 ms.
+Mandelbrot set calculation for Rank 5 took: 226 ms.
+Mandelbrot set calculation for Rank 1 took: 1836 ms.
+Mandelbrot set calculation for Rank 4 took: 1854 ms.
+Mandelbrot set calculation for Rank 2 took: 3424 ms.
+Mandelbrot set calculation for Rank 3 took: 3442 ms.
+In total Mandelbrot set calculation for image size1344x768 took: 3500 ms.
