@@ -1,14 +1,26 @@
-No arguments given, using default size 1344x768
-Rank 0 is calculating 128 rows starting from 0 until 128
-Rank 1 is calculating 128 rows starting from 128 until 256
-Rank 2 is calculating 128 rows starting from 256 until 384
-Rank 3 is calculating 128 rows starting from 384 until 512
-Rank 5 is calculating 128 rows starting from 640 until 768
-Rank 4 is calculating 128 rows starting from 512 until 640
-Mandelbrot set calculation for Rank 0 took: 224 ms.
-Mandelbrot set calculation for Rank 5 took: 226 ms.
-Mandelbrot set calculation for Rank 1 took: 1836 ms.
-Mandelbrot set calculation for Rank 4 took: 1854 ms.
-Mandelbrot set calculation for Rank 2 took: 3424 ms.
-Mandelbrot set calculation for Rank 3 took: 3442 ms.
-In total Mandelbrot set calculation for image size1344x768 took: 3500 ms.
+Using size 15360x8640
+Rank 1 is calculating 720 rows starting from 720 until 1440
+Rank 0 is calculating 720 rows starting from 0 until 720
+Rank 11 is calculating 720 rows starting from 7920 until 8640
+Rank 10 is calculating 720 rows starting from 7200 until 7920
+Rank 8 is calculating 720 rows starting from 5760 until 6480
+Rank 2 is calculating 720 rows starting from 1440 until 2160
+Rank 9 is calculating 720 rows starting from 6480 until 7200
+Rank 3 is calculating 720 rows starting from 2160 until 2880
+Rank 6 is calculating 720 rows starting from 4320 until 5040
+Rank 5 is calculating 720 rows starting from 3600 until 4320
+Rank 7 is calculating 720 rows starting from 5040 until 5760
+Rank 4 is calculating 720 rows starting from 2880 until 3600
+Mandelbrot set calculation for Rank 0 took: 2317 ms.
+Mandelbrot set calculation for Rank 11 took: 2323 ms.
+Mandelbrot set calculation for Rank 1 took: 26564 ms.
+Mandelbrot set calculation for Rank 10 took: 26680 ms.
+Mandelbrot set calculation for Rank 9 took: 89955 ms.
+Mandelbrot set calculation for Rank 2 took: 90303 ms.
+Mandelbrot set calculation for Rank 3 took: 146105 ms.
+Mandelbrot set calculation for Rank 8 took: 146839 ms.
+Mandelbrot set calculation for Rank 7 took: 192846 ms.
+Mandelbrot set calculation for Rank 4 took: 193557 ms.
+Mandelbrot set calculation for Rank 5 took: 246297 ms.
+Mandelbrot set calculation for Rank 6 took: 247364 ms.
+In total Mandelbrot set calculation for image size15360x8640 took: 247477 ms.

@@ -17,8 +17,9 @@
 #include "stb_image_write.h"
 #pragma GCC diagnostic pop
 
-constexpr int default_size_x = 1920;
-constexpr int default_size_y = 1080;
+// 8K by default
+constexpr int default_size_x = 7680;
+constexpr int default_size_y = 4320;
 
 // RGB image will hold 3 color channels
 constexpr int num_channels = 3;
@@ -125,6 +126,8 @@ int main(int argc, char **argv) {
 	int rank, size;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+	std::cout << "Ranks " << rank << " of " << size << " started." << std::endl;
 
 	int size_x = default_size_x;
 	int size_y = default_size_y;

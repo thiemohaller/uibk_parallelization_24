@@ -7,12 +7,12 @@
 # Redirect output stream to this file
 #SBATCH --output=mandelbrot.log
 # Maximum number of tasks (=processes) to start in total
-#SBATCH --ntasks=6
-# Maximum number of tasks (=processes) to start per node
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks=12
+# Maximum number of tasks (=processes) to start per node, LLC3 has 12 cpus per core without hyperthreading
+#SBATCH --ntasks-per-node=2
 # Enforce exclusive node allocation, do not share with other jobs
 #SBATCH --exclusive
 
 module load openmpi/3.1.6-gcc-12.2.0-d2gmn55
 
-mpiexec -n $SLURM_NTASKS ./build/mandelbrot_mpi
+mpiexec -n $SLURM_NTASKS ./build/mandelbrot_mpi 15360 8640

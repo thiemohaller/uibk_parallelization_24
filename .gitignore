@@ -50,3 +50,4 @@ _deps
 code_students/bin/tests
 code_students/build/
 code_students/build_debug
+assignments/02/mandelbrot_mpi.png
