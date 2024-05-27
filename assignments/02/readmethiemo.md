@@ -10,3 +10,4 @@ If build relevant files have changed, call cmake again, otherwise only calling `
 
 In root directory, in order to run with slurm, use `sbatch job.sh`.
 Check if running with `squeue -u cb761148` or `squeue --me`.
+To continuously monitor (once per second): `watch -n 1 squeue --me`

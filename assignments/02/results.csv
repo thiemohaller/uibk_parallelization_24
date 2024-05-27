@@ -1,0 +1,5 @@
+dimension_x,dimension_y,tasks,tasks_per_node,nodes_in_use_by_slurm,duration_total,duration_image_saving
+15360,8640,36,6,6,90087,40994
+15360,8640,36,12,3,90102,41638
+15360,8640,60,12,5,54727,41418
+15360,8640,72,12,6,45893,41430

@@ -1,9 +1,9 @@
-#include <mpi.h>
 #include <bits/chrono.h>
+#include <chrono>
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
-#include <chrono>
+#include <mpi.h>
 #include <sys/time.h>
 #include <tuple>
 #include <vector>
@@ -28,9 +28,7 @@ constexpr int max_iterations = 10000;
 
 #define IND(Y, X, SIZE_Y, SIZE_X, CHANNEL) (Y * SIZE_X * num_channels + X * num_channels + CHANNEL)
 
-size_t index(int y, int x, int /*size_y*/, int size_x, int channel) {
-	return y * size_x * num_channels + x * num_channels + channel;
-}
+size_t index(int y, int x, int /*size_y*/, int size_x, int channel) { return y * size_x * num_channels + x * num_channels + channel; }
 
 using Image = std::vector<uint8_t>;
 
@@ -127,7 +125,7 @@ int main(int argc, char **argv) {
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-	std::cout << "Ranks " << rank << " of " << size << " started." << std::endl;
+	std::cout << "Rank " << rank << " of " << size << " started." << std::endl;
 
 	int size_x = default_size_x;
 	int size_y = default_size_y;
@@ -136,7 +134,7 @@ int main(int argc, char **argv) {
 		size_x = atoi(argv[1]);
 		size_y = atoi(argv[2]);
 		if (rank == 0) {
-			std::cout << "Using size " << size_x << "x" << size_y << std::endl;
+			std::cout << "Using passed arguments for size x and y: " << size_x << "x" << size_y << std::endl;
 		}
 	} else {
 		if (rank == 0) {
@@ -146,7 +144,7 @@ int main(int argc, char **argv) {
 
 	// -----
 	int num_rows_per_rank = size_y / size;
-	int start_y = rank * num_rows_per_rank; // slice based on rank
+	int start_y = rank * num_rows_per_rank;                                     // slice based on rank
 	int num_rows = (rank == size - 1) ? (size_y - start_y) : num_rows_per_rank; // handle remainder if y is not divisible by size
 
 	int sub_image_size = num_channels * size_x * num_rows;
@@ -161,20 +159,30 @@ int main(int argc, char **argv) {
 	// on root, gather all subimages and write to file
 	if (rank == 0) {
 		Image final_image(num_channels * size_x * size_y);
-		MPI_Gather(sub_image.data(), sub_image_size, MPI_UINT8_T,
-				   final_image.data(), sub_image_size, MPI_UINT8_T, 0, MPI_COMM_WORLD);
+		std::cout << "Subimage size: " << sub_image_size << std::endl;
+		std::cout << "Final image size: " << final_image.size() << std::endl;
+		MPI_Gather(sub_image.data(), sub_image_size, MPI_UINT8_T, final_image.data(), sub_image_size, MPI_UINT8_T, 0, MPI_COMM_WORLD);
 
-		// stop time
-		auto time_end = std::chrono::high_resolution_clock::now();
-		auto time_elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start).count();
-		std::cout << "In total Mandelbrot set calculation for image size" << size_x << "x" << size_y << " took: " << time_elapsed << " ms." << std::endl;
+		// stop time for mandelbrot calculation
+		auto time_end_calculation = std::chrono::high_resolution_clock::now();
+		auto time_elapsed_calculation = std::chrono::duration_cast<std::chrono::milliseconds>(time_end_calculation - time_start).count();
+		std::cout << "In total Mandelbrot set calculation for image size " << size_x << "x" << size_y << " took: " << time_elapsed_calculation << " ms."
+		          << std::endl;
+
+		// start time for image saving
+		auto time_start_saving = std::chrono::high_resolution_clock::now();
 
 		constexpr int stride_bytes = 0;
 		stbi_write_png("mandelbrot_mpi.png", size_x, size_y, num_channels, final_image.data(), stride_bytes);
+
+		// stop time for image saving
+		auto time_end_saving = std::chrono::high_resolution_clock::now();
+		auto time_elapsed_saving = std::chrono::duration_cast<std::chrono::milliseconds>(time_end_saving - time_start_saving).count();
+		std::cout << "Image saving took: " << time_elapsed_saving << " ms." << std::endl;
 	} else {
 		// if not root, send data to root (use nullptr to receive as seen in the lecture)
-		MPI_Gather(sub_image.data(), sub_image_size, MPI_UINT8_T,
-				   nullptr, 0, MPI_UINT8_T, 0, MPI_COMM_WORLD);
+		MPI_Gather(sub_image.data(), sub_image_size, MPI_UINT8_T, nullptr, 0, MPI_UINT8_T, 0, MPI_COMM_WORLD);
+		std::cout << "Rank " << rank << " sent its subimage to root." << std::endl;
 	}
 
 	MPI_Finalize();

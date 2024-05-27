@@ -7,9 +7,9 @@
 # Redirect output stream to this file
 #SBATCH --output=mandelbrot.log
 # Maximum number of tasks (=processes) to start in total
-#SBATCH --ntasks=12
+#SBATCH --ntasks=72
 # Maximum number of tasks (=processes) to start per node, LLC3 has 12 cpus per core without hyperthreading
-#SBATCH --ntasks-per-node=2
+#SBATCH --ntasks-per-node=12
 # Enforce exclusive node allocation, do not share with other jobs
 #SBATCH --exclusive
 

@@ -1,26 +1,292 @@
-Using size 15360x8640
-Rank 1 is calculating 720 rows starting from 720 until 1440
-Rank 0 is calculating 720 rows starting from 0 until 720
-Rank 11 is calculating 720 rows starting from 7920 until 8640
-Rank 10 is calculating 720 rows starting from 7200 until 7920
-Rank 8 is calculating 720 rows starting from 5760 until 6480
-Rank 2 is calculating 720 rows starting from 1440 until 2160
-Rank 9 is calculating 720 rows starting from 6480 until 7200
-Rank 3 is calculating 720 rows starting from 2160 until 2880
-Rank 6 is calculating 720 rows starting from 4320 until 5040
-Rank 5 is calculating 720 rows starting from 3600 until 4320
-Rank 7 is calculating 720 rows starting from 5040 until 5760
-Rank 4 is calculating 720 rows starting from 2880 until 3600
-Mandelbrot set calculation for Rank 0 took: 2317 ms.
-Mandelbrot set calculation for Rank 11 took: 2323 ms.
-Mandelbrot set calculation for Rank 1 took: 26564 ms.
-Mandelbrot set calculation for Rank 10 took: 26680 ms.
-Mandelbrot set calculation for Rank 9 took: 89955 ms.
-Mandelbrot set calculation for Rank 2 took: 90303 ms.
-Mandelbrot set calculation for Rank 3 took: 146105 ms.
-Mandelbrot set calculation for Rank 8 took: 146839 ms.
-Mandelbrot set calculation for Rank 7 took: 192846 ms.
-Mandelbrot set calculation for Rank 4 took: 193557 ms.
-Mandelbrot set calculation for Rank 5 took: 246297 ms.
-Mandelbrot set calculation for Rank 6 took: 247364 ms.
-In total Mandelbrot set calculation for image size15360x8640 took: 247477 ms.
+Rank 1 of 72 started.
+Rank 3 of 72 started.
+Rank 5 of 72 started.
+Rank 6 of 72 started.
+Rank 11 of 72 started.
+Rank 4 of 72 started.
+Rank 8 of 72 started.
+Rank 0 of 72 started.
+Using passed arguments for size x and y: 15360x8640
+Rank 0 is calculating 120 rows starting from 0 until 120
+Rank 2 of 72 started.
+Rank 1 is calculating 120 rows starting from 120 until 240
+Rank 11 is calculating 120 rows starting from 1320 until 1440
+Rank 3 is calculating 120 rows starting from 360 until 480
+Rank 7 of 72 started.
+Rank 7 is calculating 120 rows starting from 840 until 960
+Rank 4 is calculating 120 rows starting from 480 until 600
+Rank 9 of 72 started.
+Rank 10 of 72 started.
+Rank 6 is calculating 120 rows starting from 720 until 840
+Rank 8 is calculating 120 rows starting from 960 until 1080
+Rank 19 of 72 started.
+Rank 45 of 72 started.
+Rank 48 of 72 started.
+Rank 27 of 72 started.
+Rank 60 of 72 started.
+Rank 21 of 72 started.
+Rank 41 of 72 started.
+Rank 49 of 72 started.
+Rank 33 of 72 started.
+Rank 62 of 72 started.
+Rank 23 of 72 started.
+Rank 43 of 72 started.
+Rank 50 of 72 started.
+Rank 24 of 72 started.
+Rank 68 of 72 started.
+Rank 9 is calculating 120 rows starting from 1080 until 1200
+Rank 13 of 72 started.
+Rank 47 of 72 started.
+Rank 51 of 72 started.
+Rank 25 of 72 started.
+Rank 70 of 72 started.
+Rank 10 is calculating 120 rows starting from 1200 until 1320
+Rank 14 of 72 started.
+Rank 37 of 72 started.
+Rank 52 of 72 started.
+Rank 26 of 72 started.
+Rank 61 of 72 started.
+Rank 15 of 72 started.
+Rank 38 of 72 started.
+Rank 53 of 72 started.
+Rank 29 of 72 started.
+Rank 63 of 72 started.
+Rank 5 is calculating 120 rows starting from 600 until 720
+Rank 17 of 72 started.
+Rank 39 of 72 started.
+Rank 57 of 72 started.
+Rank 30 of 72 started.
+Rank 66 of 72 started.
+Rank 2 is calculating 120 rows starting from 240 until 360
+Rank 18 of 72 started.
+Rank 42 of 72 started.
+Rank 58 of 72 started.
+Rank 31 of 72 started.
+Rank 67 of 72 started.
+Rank 20 of 72 started.
+Rank 46 of 72 started.
+Rank 59 of 72 started.
+Rank 32 of 72 started.
+Rank 69 of 72 started.
+Rank 22 of 72 started.
+Rank 36 of 72 started.
+Rank 54 of 72 started.
+Rank 34 of 72 started.
+Rank 64 of 72 started.
+Rank 12 of 72 started.
+Rank 40 of 72 started.
+Rank 55 of 72 started.
+Rank 35 of 72 started.
+Rank 65 of 72 started.
+Rank 16 of 72 started.
+Rank 44 of 72 started.
+Rank 56 of 72 started.
+Rank 71 of 72 started.
+Rank 23 is calculating 120 rows starting from 2760 until 2880
+Rank 59 is calculating 120 rows starting from 7080 until 7200
+Rank 28 of 72 started.
+Rank 70 is calculating 120 rows starting from 8400 until 8520
+Rank 14 is calculating 120 rows starting from 1680 until 1800
+Rank 46 is calculating 120 rows starting from 5520 until 5640
+Rank 55 is calculating 120 rows starting from 6600 until 6720
+Rank 32 is calculating 120 rows starting from 3840 until 3960
+Rank 64 is calculating 120 rows starting from 7680 until 7800
+Rank 18 is calculating 120 rows starting from 2160 until 2280
+Rank 37 is calculating 120 rows starting from 4440 until 4560
+Rank 48 is calculating 120 rows starting from 5760 until 5880
+Rank 34 is calculating 120 rows starting from 4080 until 4200
+Rank 61 is calculating 120 rows starting from 7320 until 7440
+Rank 20 is calculating 120 rows starting from 2400 until 2520
+Rank 36 is calculating 120 rows starting from 4320 until 4440
+Rank 50 is calculating 120 rows starting from 6000 until 6120
+Rank 33 is calculating 120 rows starting from 3960 until 4080
+Rank 69 is calculating 120 rows starting from 8280 until 8400
+Rank 16 is calculating 120 rows starting from 1920 until 2040
+Rank 39 is calculating 120 rows starting from 4680 until 4800
+Rank 49 is calculating 120 rows starting from 5880 until 6000
+Rank 35 is calculating 120 rows starting from 4200 until 4320
+Rank 63 is calculating 120 rows starting from 7560 until 7680
+Rank 13 is calculating 120 rows starting from 1560 until 1680
+Rank 45 is calculating 120 rows starting from 5400 until 5520
+Rank 51 is calculating 120 rows starting from 6120 until 6240
+Rank 29 is calculating 120 rows starting from 3480 until 3600
+Rank 67 is calculating 120 rows starting from 8040 until 8160
+Rank 15 is calculating 120 rows starting from 1800 until 1920
+Rank 42 is calculating 120 rows starting from 5040 until 5160
+Rank 58 is calculating 120 rows starting from 6960 until 7080
+Rank 31 is calculating 120 rows starting from 3720 until 3840
+Rank 68 is calculating 120 rows starting from 8160 until 8280
+Rank 17 is calculating 120 rows starting from 2040 until 2160
+Rank 41 is calculating 120 rows starting from 4920 until 5040
+Rank 54 is calculating 120 rows starting from 6480 until 6600
+Rank 25 is calculating 120 rows starting from 3000 until 3120
+Rank 66 is calculating 120 rows starting from 7920 until 8040
+Rank 12 is calculating 120 rows starting from 1440 until 1560
+Rank 40 is calculating 120 rows starting from 4800 until 4920
+Rank 52 is calculating 120 rows starting from 6240 until 6360
+Rank 26 is calculating 120 rows starting from 3120 until 3240
+Rank 62 is calculating 120 rows starting from 7440 until 7560
+Rank 19 is calculating 120 rows starting from 2280 until 2400
+Rank 43 is calculating 120 rows starting from 5160 until 5280
+Rank 56 is calculating 120 rows starting from 6720 until 6840
+Rank 30 is calculating 120 rows starting from 3600 until 3720
+Rank 60 is calculating 120 rows starting from 7200 until 7320
+Rank 22 is calculating 120 rows starting from 2640 until 2760
+Rank 47 is calculating 120 rows starting from 5640 until 5760
+Rank 57 is calculating 120 rows starting from 6840 until 6960
+Rank 27 is calculating 120 rows starting from 3240 until 3360
+Rank 65 is calculating 120 rows starting from 7800 until 7920
+Rank 21 is calculating 120 rows starting from 2520 until 2640
+Rank 38 is calculating 120 rows starting from 4560 until 4680
+Rank 53 is calculating 120 rows starting from 6360 until 6480
+Rank 28 is calculating 120 rows starting from 3360 until 3480
+Rank 71 is calculating 120 rows starting from 8520 until 8640
+Rank 44 is calculating 120 rows starting from 5280 until 5400
+Rank 24 is calculating 120 rows starting from 2880 until 3000
+Mandelbrot set calculation for Rank 1 took: 72 ms.
+Mandelbrot set calculation for Rank 70 took: 72 ms.
+Mandelbrot set calculation for Rank 69 took: 79 ms.
+Mandelbrot set calculation for Rank 0 took: 93 ms.
+Mandelbrot set calculation for Rank 3 took: 104 ms.
+Mandelbrot set calculation for Rank 2 took: 108 ms.
+Mandelbrot set calculation for Rank 68 took: 120 ms.
+Mandelbrot set calculation for Rank 71 took: 121 ms.
+Subimage size: 5529600
+Final image size: 398131200
+Rank 1 sent its subimage to root.
+Rank 2 sent its subimage to root.
+Rank 3 sent its subimage to root.
+Mandelbrot set calculation for Rank 4 took: 914 ms.
+Rank 4 sent its subimage to root.
+Mandelbrot set calculation for Rank 67 took: 920 ms.
+Mandelbrot set calculation for Rank 5 took: 1158 ms.
+Rank 5 sent its subimage to root.
+Mandelbrot set calculation for Rank 66 took: 1182 ms.
+Mandelbrot set calculation for Rank 6 took: 3405 ms.
+Rank 6 sent its subimage to root.
+Mandelbrot set calculation for Rank 12 took: 3414 ms.
+Mandelbrot set calculation for Rank 59 took: 3437 ms.
+Mandelbrot set calculation for Rank 65 took: 3440 ms.
+Mandelbrot set calculation for Rank 11 took: 3934 ms.
+Mandelbrot set calculation for Rank 60 took: 3935 ms.
+Mandelbrot set calculation for Rank 61 took: 4938 ms.
+Mandelbrot set calculation for Rank 10 took: 4954 ms.
+Mandelbrot set calculation for Rank 7 took: 4984 ms.
+Mandelbrot set calculation for Rank 64 took: 4986 ms.
+Rank 7 sent its subimage to root.
+Mandelbrot set calculation for Rank 8 took: 5181 ms.
+Rank 8 sent its subimage to root.
+Mandelbrot set calculation for Rank 63 took: 5187 ms.
+Mandelbrot set calculation for Rank 9 took: 5332 ms.
+Rank 9 sent its subimage to root.
+Mandelbrot set calculation for Rank 62 took: 5347 ms.
+Rank 10 sent its subimage to root.
+Rank 11 sent its subimage to root.
+Rank 12 sent its subimage to root.
+Mandelbrot set calculation for Rank 13 took: 10865 ms.
+Rank 13 sent its subimage to root.
+Mandelbrot set calculation for Rank 58 took: 10930 ms.
+Mandelbrot set calculation for Rank 14 took: 15096 ms.
+Rank 14 sent its subimage to root.
+Mandelbrot set calculation for Rank 57 took: 15135 ms.
+Mandelbrot set calculation for Rank 15 took: 19798 ms.
+Rank 15 sent its subimage to root.
+Mandelbrot set calculation for Rank 56 took: 19845 ms.
+Mandelbrot set calculation for Rank 16 took: 22304 ms.
+Rank 16 sent its subimage to root.
+Mandelbrot set calculation for Rank 55 took: 22310 ms.
+Mandelbrot set calculation for Rank 17 took: 22413 ms.
+Rank 17 sent its subimage to root.
+Mandelbrot set calculation for Rank 54 took: 22443 ms.
+Mandelbrot set calculation for Rank 53 took: 22507 ms.
+Mandelbrot set calculation for Rank 18 took: 22523 ms.
+Rank 18 sent its subimage to root.
+Mandelbrot set calculation for Rank 19 took: 23383 ms.
+Rank 19 sent its subimage to root.
+Mandelbrot set calculation for Rank 52 took: 23421 ms.
+Mandelbrot set calculation for Rank 51 took: 25609 ms.
+Mandelbrot set calculation for Rank 20 took: 25660 ms.
+Rank 20 sent its subimage to root.
+Mandelbrot set calculation for Rank 50 took: 26005 ms.
+Mandelbrot set calculation for Rank 21 took: 26101 ms.
+Rank 21 sent its subimage to root.
+Mandelbrot set calculation for Rank 49 took: 26572 ms.
+Mandelbrot set calculation for Rank 22 took: 26638 ms.
+Rank 22 sent its subimage to root.
+Mandelbrot set calculation for Rank 25 took: 28775 ms.
+Mandelbrot set calculation for Rank 48 took: 28793 ms.
+Mandelbrot set calculation for Rank 46 took: 28803 ms.
+Mandelbrot set calculation for Rank 24 took: 28858 ms.
+Mandelbrot set calculation for Rank 23 took: 28878 ms.
+Rank 23 sent its subimage to root.
+Mandelbrot set calculation for Rank 47 took: 28883 ms.
+Rank 24 sent its subimage to root.
+Rank 25 sent its subimage to root.
+Mandelbrot set calculation for Rank 26 took: 30777 ms.
+Rank 26 sent its subimage to root.
+Mandelbrot set calculation for Rank 45 took: 30839 ms.
+Mandelbrot set calculation for Rank 27 took: 35743 ms.
+Rank 27 sent its subimage to root.
+Mandelbrot set calculation for Rank 44 took: 35939 ms.
+Mandelbrot set calculation for Rank 28 took: 38092 ms.
+Rank 28 sent its subimage to root.
+Mandelbrot set calculation for Rank 43 took: 38122 ms.
+Mandelbrot set calculation for Rank 29 took: 39340 ms.
+Rank 29 sent its subimage to root.
+Mandelbrot set calculation for Rank 42 took: 39413 ms.
+Mandelbrot set calculation for Rank 30 took: 41242 ms.
+Rank 30 sent its subimage to root.
+Mandelbrot set calculation for Rank 41 took: 41304 ms.
+Mandelbrot set calculation for Rank 31 took: 41670 ms.
+Rank 31 sent its subimage to root.
+Mandelbrot set calculation for Rank 40 took: 41702 ms.
+Mandelbrot set calculation for Rank 39 took: 42341 ms.
+Mandelbrot set calculation for Rank 32 took: 42395 ms.
+Rank 32 sent its subimage to root.
+Mandelbrot set calculation for Rank 33 took: 42652 ms.
+Rank 33 sent its subimage to root.
+Mandelbrot set calculation for Rank 38 took: 42690 ms.
+Mandelbrot set calculation for Rank 37 took: 44540 ms.
+Mandelbrot set calculation for Rank 34 took: 44557 ms.
+Rank 34 sent its subimage to root.
+Mandelbrot set calculation for Rank 35 took: 45134 ms.
+Rank 35 sent its subimage to root.
+Mandelbrot set calculation for Rank 36 took: 45368 ms.
+Rank 36 sent its subimage to root.
+Rank 37 sent its subimage to root.
+Rank 38 sent its subimage to root.
+Rank 39 sent its subimage to root.
+Rank 40 sent its subimage to root.
+Rank 41 sent its subimage to root.
+Rank 42 sent its subimage to root.
+Rank 43 sent its subimage to root.
+Rank 44 sent its subimage to root.
+Rank 45 sent its subimage to root.
+Rank 46 sent its subimage to root.
+Rank 47 sent its subimage to root.
+Rank 48 sent its subimage to root.
+Rank 49 sent its subimage to root.
+Rank 50 sent its subimage to root.
+Rank 51 sent its subimage to root.
+Rank 52 sent its subimage to root.
+Rank 53 sent its subimage to root.
+Rank 54 sent its subimage to root.
+Rank 55 sent its subimage to root.
+Rank 56 sent its subimage to root.
+Rank 57 sent its subimage to root.
+Rank 58 sent its subimage to root.
+Rank 59 sent its subimage to root.
+Rank 60 sent its subimage to root.
+Rank 61 sent its subimage to root.
+Rank 62 sent its subimage to root.
+Rank 63 sent its subimage to root.
+Rank 64 sent its subimage to root.
+Rank 65 sent its subimage to root.
+Rank 66 sent its subimage to root.
+Rank 67 sent its subimage to root.
+Rank 68 sent its subimage to root.
+Rank 69 sent its subimage to root.
+Rank 70 sent its subimage to root.
+In total Mandelbrot set calculation for image size 15360x8640 took: 45893 ms.
+Rank 71 sent its subimage to root.
+Image saving took: 41430 ms.
