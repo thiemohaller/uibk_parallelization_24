@@ -7,10 +7,12 @@
 # Redirect output stream to this file
 #SBATCH --output=output.log
 # Maximum number of tasks (=processes) to start in total
-#SBATCH --ntasks=1
+#SBATCH --ntasks=4
 # Maximum number of tasks (=processes) to start per node
 #SBATCH --ntasks-per-node=1
 # Enforce exclusive node allocation, do not share with other jobs
 #SBATCH --exclusive
 
-/bin/hostname
+module load openmpi/3.1.6-gcc-12.2.0-d2gmn55
+
+mpiexec -n $SLURM_NTASKS ./code_students/build/apps/run_full_code_parallel

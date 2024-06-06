@@ -173,6 +173,7 @@ int main(int argc, char **argv) {
 		auto time_start_saving = std::chrono::high_resolution_clock::now();
 		constexpr int stride_bytes = 0;
 		stbi_write_png("mandelbrot_mpi.png", size_x, size_y, num_channels, final_image.data(), stride_bytes);
+		// stbi_write_bmp("mandelbrot_mpi.bmp", size_x, size_y, num_channels, final_image.data());
 		// stop time for image saving
 		auto time_end_saving = std::chrono::high_resolution_clock::now();
 		auto time_elapsed_saving = std::chrono::duration_cast<std::chrono::milliseconds>(time_end_saving - time_start_saving).count();
