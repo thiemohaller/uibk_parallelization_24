@@ -4,4 +4,5 @@ echo "Submitting mandelbrot job via slurm"
 sbatch job.sh
 
 echo "Watching submitted job"
-watch -n 1 squeue --me
+watch -n 1 squ
+# squ is an alias for squeue --me
