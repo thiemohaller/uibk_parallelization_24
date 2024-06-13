@@ -8,6 +8,7 @@ add_library(sim_setup
 target_include_directories(sim_setup
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
     PUBLIC ${PROJECT_SOURCE_DIR}/include
+    PUBLIC ${MPI_CXX_INCLUDE_PATH}
 )
 
 add_library(mpi_stuff

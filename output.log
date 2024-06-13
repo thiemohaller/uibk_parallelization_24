@@ -1,8 +1,130 @@
-World size: 4
-World rank: 0
-World size: 4
-World rank: 1
-World size: 4
-World rank: 2
-World size: 4
-World rank: 3
+World size: 8
+ Running in parallel with 8 tasks 
+ Created new tasks for rank 1
+ MPI coordinates for rank 1 -> 0 0 1
+ Created new tasks for rank 2
+ MPI coordinates for rank 2 -> 0 1 0
+ Created new tasks for rank 3
+ MPI coordinates for rank 3 -> 0 1 1
+ Created new tasks for rank 4
+ MPI coordinates for rank 4 -> 1 0 0
+ Created new tasks for rank 5
+ MPI coordinates for rank 5 -> 1 0 1
+ Created new tasks for rank 6
+ MPI coordinates for rank 6 -> 1 1 0
+ Created new tasks for rank 7
+ MPI coordinates for rank 7 -> 1 1 1
+ Created new tasks for rank 0
+ MPI coordinates for rank 0 -> 0 0 0
+---------------------- DEBUG GRID RANK 1----------------------
+Global Grid Information:
+Number of Cells: 128 64 32
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+---------------------- DEBUG GRID RANK 2----------------------
+Global Grid Information:
+Number of Cells: 128 64 32
+Lower Bound: -0.5 -0.5 -0.5
+---------------------- DEBUG GRID RANK 3----------------------
+Global Grid Information:
+Number of Cells: 128 64 32
+---------------------- DEBUG GRID RANK 4----------------------
+Global Grid Information:
+Number of Cells: 128 64 32
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+----
+Local Grid Information:
+Number of Cells: 64 32 16
+Lower Bound: 0 -0.5 -0.5
+Upper Bound: 0.5 0 0
+---------------------- DEBUG GRID RANK 5----------------------
+Global Grid Information:
+Number of Cells: 128 64 32
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+----
+Local Grid Information:
+Number of Cells: 64 32 16
+Lower Bound: 0 -0.5 0
+Upper Bound: 0.5 0 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+Left neighbor: 1
+---------------------- DEBUG GRID RANK 6----------------------
+Global Grid Information:
+Number of Cells: 128 64 32
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+----
+Local Grid Information:
+Number of Cells: 64 32 16
+Lower Bound: 0 0 -0.5
+Upper Bound: 0.5 0.5 0
+Cell Size: 0.0078125 0.015625 0.03125
+Left neighbor: 2
+Right neighbor: -2
+---------------------- DEBUG GRID RANK 0----------------------
+Global Grid Information:
+Number of Cells: 128 64 32
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+----
+Local Grid Information:
+Number of Cells: 64 32 16
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0 0 0
+---------------------- DEBUG GRID RANK 7----------------------
+Global Grid Information:
+Number of Cells: 128 64 32
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+----
+Local Grid Information:
+Number of Cells: 64 32 16
+Lower Bound: 0 0 0
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+Left neighbor: 3
+Right neighbor: -2
+Cell Size: 0.0078125 0.015625 0.03125
+----
+Local Grid Information:
+Number of Cells: 64 32 16
+Lower Bound: -0.5 -0.5 0
+Upper Bound: 0 0 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+Left neighbor: -2
+Right neighbor: 5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+----
+Local Grid Information:
+Number of Cells: 64 32 16
+Lower Bound: -0.5 0 -0.5
+Upper Bound: 0 0.5 0
+Cell Size: 0.0078125 0.015625 0.03125
+Left neighbor: -2
+Right neighbor: 6
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+----
+Local Grid Information:
+Number of Cells: 64 32 16
+Lower Bound: -0.5 0 0
+Upper Bound: 0 0.5 0.5
+Cell Size: 0.0078125 0.015625 0.03125
+Left neighbor: -2
+Right neighbor: 7
+Cell Size: 0.0078125 0.015625 0.03125
+Left neighbor: 0
+Right neighbor: -2
+Right neighbor: -2
+Cell Size: 0.0078125 0.015625 0.03125
+Left neighbor: -2
+Right neighbor: 4
