@@ -72,8 +72,8 @@ int main(int argc, char **argv) {
 	bound_up[2] = 0.5;
 
 	std::vector<int> num_cells(3);
-	num_cells[0] = 128;
-	num_cells[1] = 64;
+	num_cells[0] = 32;
+	num_cells[1] = 32;
 	num_cells[2] = 32;
 
 	std::vector<int> num_tasks(3);
@@ -85,18 +85,18 @@ int main(int argc, char **argv) {
 	grid_3D global_grid(bound_low, bound_up, num_cells, 2);
 	grid_3D local_grid = mpi.make_local_grid(global_grid);
 	printDebug(global_grid, local_grid, world_rank);
+
 	// Get neighboring processors
-	int left_rank, right_rank;
-	MPI_Cart_shift(mpi.comm3D, 0, 1, &left_rank, &right_rank);
-	std::cout << "Left neighbor: " << left_rank << std::endl;
-	std::cout << "Right neighbor: " << right_rank << std::endl;
+	// int left_rank, right_rank;
+	// MPI_Cart_shift(mpi.comm3D, 0, 1, &left_rank, &right_rank);
+	// std::cout << "Left neighbor: " << left_rank << std::endl;
+	// std::cout << "Right neighbor: " << right_rank << std::endl;
 
-	MPI_Finalize();
-	return 0;
-
+	// MPI_Finalize();
+	// return 0;
 	// Get number of Sedov cells
 	Sedov_volume = 0.0;
-	int num_Sedov_cells = 0;
+	int num_Sedov_cells_local = 0;
 	double volume_cell = local_grid.x_grid.get_dx() * local_grid.y_grid.get_dx() * local_grid.z_grid.get_dx();
 
 	for (int ix = 0; ix < local_grid.get_num_cells(0); ++ix) {
@@ -108,26 +108,45 @@ int main(int argc, char **argv) {
 				double dist = sqrt(sim_util::square(x_position) + sim_util::square(y_position) + sim_util::square(z_position));
 				if (dist < 0.1) {
 					Sedov_volume += volume_cell;
-					num_Sedov_cells++;
+					num_Sedov_cells_local++;
 				}
 			}
 		}
 	}
-	std::cout << " Volume of Sedov region: " << Sedov_volume << " in " << num_Sedov_cells << " cells\n";
 
-	// Now, I will create a HD fluid
-	fluid hd_fluid(parallelisation::FluidType::adiabatic);
-	hd_fluid.setup(local_grid);
+	// Gather the number of Sedov cells and the total volume
+	int total_Sedov_cells = 0;
+	double total_Sedov_volume = 0.0;
+	MPI_Reduce(&num_Sedov_cells_local, &total_Sedov_cells, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+	MPI_Reduce(&Sedov_volume, &total_Sedov_volume, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
-	std::function<void(fluid_cell &, double, double, double)> function_init = init_Sedov;
+	// Print the volume of Sedov region on rank 0
+	if (world_rank == 0) {
+		std::cout << " Volume of Sedov region: " << total_Sedov_volume << " in " << total_Sedov_cells << " cells\n";
+	}
 
-	finite_volume_solver solver(hd_fluid);
-	solver.set_init_function(function_init);
+	// Broadcast the total number of Sedov cells and the total volume to all ranks
+	MPI_Bcast(&total_Sedov_cells, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	MPI_Bcast(&total_Sedov_volume, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-	double t_final = 0.1;
-	double dt_out = 0.005;
+	MPI_Finalize();
+	return 0;
+	
+	// Now, I will create a HD fluid only on ranks with Sedov cells
+	if (num_Sedov_cells_local > 0) {
+		fluid hd_fluid(parallelisation::FluidType::adiabatic);
+		hd_fluid.setup(local_grid);
 
-	solver.run(local_grid, hd_fluid, t_final, dt_out);
+		std::function<void(fluid_cell &, double, double, double)> function_init = init_Sedov;
+
+		finite_volume_solver solver(hd_fluid);
+		solver.set_init_function(function_init);
+
+		double t_final = 0.1;
+		double dt_out = 0.005;
+
+		solver.run(local_grid, hd_fluid, t_final, dt_out);
+	}
 
 	MPI_Finalize();
 	return 0;
