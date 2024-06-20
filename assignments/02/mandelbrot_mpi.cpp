@@ -16,6 +16,7 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 #pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 
 // 8K by default
 constexpr int default_size_x = 7680;

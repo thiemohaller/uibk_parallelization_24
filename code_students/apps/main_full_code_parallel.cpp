@@ -2,8 +2,6 @@
 #include "setup/fluid.hpp"
 #include "setup/grid.hpp"
 #include "solver/finite_volume_solver.hpp"
-#include "solver/time_integrator.hpp"
-#include "util/matrix.hpp"
 #include "util/utility_functions.hpp"
 #include "setup/mpi_handler.hpp"
 
@@ -14,6 +12,7 @@
 
 double Sedov_volume;
 
+// Currently results in race condition -> TODO find a way to fix it
 void printDebug(const grid_3D& global_grid, const grid_3D& local_grid, const int rank) {
 	std::cout << "---------------------- DEBUG GRID RANK " << rank << "----------------------\n";
 	std::cout << "Global Grid Information:\n";

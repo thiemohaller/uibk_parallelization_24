@@ -39,7 +39,7 @@ private:
 	void transform_fluid_to_characteristic(fluid &current_fluid);
 	void apply_boundary_conditions(grid_3D &spatial_grid, fluid &current_fluid);
 
-#ifdef PARALLEL_VERSION	
+#ifdef PARALLEL_VERSION
 	void store_timestep_parallel(grid_3D &spatial_grid, fluid &current_fluid);
 #else
 	void store_timestep(grid_3D &spatial_grid, fluid &current_fluid);
