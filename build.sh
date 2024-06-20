@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Move to build directory
-cd code_students/build
+cd code_parallel/build
 
 # load module for mpi
 module load gcc/12.2.0-gcc-8.5.0-p4pe45v openmpi/3.1.6-gcc-12.2.0-d2gmn55
