@@ -28,6 +28,7 @@ void printDebug(const grid_3D& global_grid, const grid_3D& local_grid, const int
 	std::cout << "Lower Bound: " << local_grid.x_grid.get_left(0) << " " << local_grid.y_grid.get_left(0) << " " << local_grid.z_grid.get_left(0) << "\n";
 	std::cout << "Upper Bound: " << local_grid.x_grid.get_left(local_grid.get_num_cells(0)) << " " << local_grid.y_grid.get_left(local_grid.get_num_cells(1)) << " " << local_grid.z_grid.get_left(local_grid.get_num_cells(2)) << "\n";
 	std::cout << "Cell Size: " << local_grid.x_grid.get_dx() << " " << local_grid.y_grid.get_dx() << " " << local_grid.z_grid.get_dx() << "\n";
+	std::cout << "---------------------- end of DEBUG GRID RANK " << rank << "----------------------\n";
 }
 
 void init_Sedov(fluid_cell &fluid, double x_position, double y_position, double z_position) {
@@ -119,7 +120,7 @@ int main(int argc, char **argv) {
 	MPI_Allreduce(&Sedov_volume, &total_Sedov_volume, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
 	// Print the volume of Sedov region on all ranks
-	std::cout << " Volume of Sedov region: " << total_Sedov_volume << " in " << total_Sedov_cells << " cells\n";
+	std::cout << " Volume of Sedov region: " << total_Sedov_volume << " in " << total_Sedov_cells << " cells for rank " << world_rank << "\n";
 
 	MPI_Finalize();
 	return 0;

@@ -12,8 +12,24 @@ Cell Size: 0.03125 0.03125 0.03125
 Local Grid Information:
 Number of Cells: 16 16 16
 Lower Bound: -0.5 -0.5 0
+Upper Bound: 0 0 0.5
+Cell Size: 0.03125 0.03125 0.03125
+---------------------- end of DEBUG GRID RANK 1----------------------
  Created new tasks for rank 2
  MPI coordinates for rank 2 -> 0 1 0
+---------------------- DEBUG GRID RANK 2----------------------
+Global Grid Information:
+Number of Cells: 32 32 32
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.03125 0.03125 0.03125
+----
+Local Grid Information:
+Number of Cells: 16 16 16
+Lower Bound: -0.5 0 -0.5
+Upper Bound: 0 0.5 0
+Cell Size: 0.03125 0.03125 0.03125
+---------------------- end of DEBUG GRID RANK 2----------------------
  Created new tasks for rank 3
  MPI coordinates for rank 3 -> 0 1 1
 ---------------------- DEBUG GRID RANK 3----------------------
@@ -26,6 +42,9 @@ Cell Size: 0.03125 0.03125 0.03125
 Local Grid Information:
 Number of Cells: 16 16 16
 Lower Bound: -0.5 0 0
+Upper Bound: 0 0.5 0.5
+Cell Size: 0.03125 0.03125 0.03125
+---------------------- end of DEBUG GRID RANK 3----------------------
  Created new tasks for rank 4
  MPI coordinates for rank 4 -> 1 0 0
 ---------------------- DEBUG GRID RANK 4----------------------
@@ -39,6 +58,8 @@ Local Grid Information:
 Number of Cells: 16 16 16
 Lower Bound: 0 -0.5 -0.5
 Upper Bound: 0.5 0 0
+Cell Size: 0.03125 0.03125 0.03125
+---------------------- end of DEBUG GRID RANK 4----------------------
  Created new tasks for rank 5
  MPI coordinates for rank 5 -> 1 0 1
 ---------------------- DEBUG GRID RANK 5----------------------
@@ -51,6 +72,9 @@ Cell Size: 0.03125 0.03125 0.03125
 Local Grid Information:
 Number of Cells: 16 16 16
 Lower Bound: 0 -0.5 0
+Upper Bound: 0.5 0 0.5
+Cell Size: 0.03125 0.03125 0.03125
+---------------------- end of DEBUG GRID RANK 5----------------------
  Created new tasks for rank 6
  MPI coordinates for rank 6 -> 1 1 0
 ---------------------- DEBUG GRID RANK 6----------------------
@@ -65,6 +89,7 @@ Number of Cells: 16 16 16
 Lower Bound: 0 0 -0.5
 Upper Bound: 0.5 0.5 0
 Cell Size: 0.03125 0.03125 0.03125
+---------------------- end of DEBUG GRID RANK 6----------------------
  Created new tasks for rank 7
  MPI coordinates for rank 7 -> 1 1 1
 ---------------------- DEBUG GRID RANK 7----------------------
@@ -79,6 +104,7 @@ Number of Cells: 16 16 16
 Lower Bound: 0 0 0
 Upper Bound: 0.5 0.5 0.5
 Cell Size: 0.03125 0.03125 0.03125
+---------------------- end of DEBUG GRID RANK 7----------------------
  Created new tasks for rank 0
  MPI coordinates for rank 0 -> 0 0 0
 ---------------------- DEBUG GRID RANK 0----------------------
@@ -93,30 +119,59 @@ Number of Cells: 16 16 16
 Lower Bound: -0.5 -0.5 -0.5
 Upper Bound: 0 0 0
 Cell Size: 0.03125 0.03125 0.03125
-Upper Bound: 0 0 0.5
-Cell Size: 0.03125 0.03125 0.03125
-Upper Bound: 0 0.5 0.5
-Cell Size: 0.03125 0.03125 0.03125
-Cell Size: 0.03125 0.03125 0.03125
-Upper Bound: 0.5 0 0.5
-Cell Size: 0.03125 0.03125 0.03125
----------------------- DEBUG GRID RANK 2----------------------
-Global Grid Information:
-Number of Cells: 32 32 32
-Lower Bound: -0.5 -0.5 -0.5
-Upper Bound: 0.5 0.5 0.5
-Cell Size: 0.03125 0.03125 0.03125
-----
-Local Grid Information:
-Number of Cells: 16 16 16
-Lower Bound: -0.5 0 -0.5
-Upper Bound: 0 0.5 0
-Cell Size: 0.03125 0.03125 0.03125
+---------------------- end of DEBUG GRID RANK 0----------------------
+ Volume of Sedov region: 0.00415039 in 136 cells for rank 2
+ Volume of Sedov region: 0.00415039 in 136 cells for rank 4
+ Volume of Sedov region: 0.00415039 in 136 cells for rank 6
+ Volume of Sedov region: 0.00415039 in 136 cells for rank 0
+ Volume of Sedov region: 0.00415039 in 136 cells for rank 7
+ Volume of Sedov region: 0.00415039 in 136 cells for rank 3
+ Volume of Sedov region: 0.00415039 in 136 cells for rank 1
+ Volume of Sedov region: 0.00415039 in 136 cells for rank 5
+	Command being timed: "mpiexec -n 8 ./code_students/build/apps/run_full_code_parallel"
+	User time (seconds): 0.24
+	System time (seconds): 0.34
+	Percent of CPU this job got: 147%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.39
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35524
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1066
+	Minor (reclaiming a frame) page faults: 24110
+	Voluntary context switches: 4992
+	Involuntary context switches: 31
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
  Volume of Sedov region: 0.00415039 in 136 cells
- Volume of Sedov region: 0.00415039 in 136 cells
- Volume of Sedov region: 0.00415039 in 136 cells
- Volume of Sedov region: 0.00415039 in 136 cells
- Volume of Sedov region: 0.00415039 in 136 cells
- Volume of Sedov region: 0.00415039 in 136 cells
- Volume of Sedov region: 0.00415039 in 136 cells
- Volume of Sedov region: 0.00415039 in 136 cells
+	Command being timed: "./code_students/build/apps/run_full_code"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 20%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.01
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4276
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 180
+	Voluntary context switches: 8
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

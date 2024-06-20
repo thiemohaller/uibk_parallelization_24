@@ -70,6 +70,8 @@ int main() {
 	}
 	std::cout << " Volume of Sedov region: " << Sedov_volume << " in " << num_Sedov_cells << " cells\n";
 
+	return 0;
+
 	// Now, I will create a HD fluid
 	fluid hd_fluid(parallelisation::FluidType::adiabatic);
 	hd_fluid.setup(my_grid);
