@@ -12,22 +12,8 @@ Cell Size: 0.03125 0.03125 0.03125
 Local Grid Information:
 Number of Cells: 16 16 16
 Lower Bound: -0.5 -0.5 0
-Upper Bound: 0 0 0.5
-Cell Size: 0.03125 0.03125 0.03125
  Created new tasks for rank 2
  MPI coordinates for rank 2 -> 0 1 0
----------------------- DEBUG GRID RANK 2----------------------
-Global Grid Information:
-Number of Cells: 32 32 32
-Lower Bound: -0.5 -0.5 -0.5
-Upper Bound: 0.5 0.5 0.5
-Cell Size: 0.03125 0.03125 0.03125
-----
-Local Grid Information:
-Number of Cells: 16 16 16
-Lower Bound: -0.5 0 -0.5
-Upper Bound: 0 0.5 0
-Cell Size: 0.03125 0.03125 0.03125
  Created new tasks for rank 3
  MPI coordinates for rank 3 -> 0 1 1
 ---------------------- DEBUG GRID RANK 3----------------------
@@ -40,10 +26,19 @@ Cell Size: 0.03125 0.03125 0.03125
 Local Grid Information:
 Number of Cells: 16 16 16
 Lower Bound: -0.5 0 0
-Upper Bound: 0 0.5 0.5
-Cell Size: 0.03125 0.03125 0.03125
  Created new tasks for rank 4
  MPI coordinates for rank 4 -> 1 0 0
+---------------------- DEBUG GRID RANK 4----------------------
+Global Grid Information:
+Number of Cells: 32 32 32
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.03125 0.03125 0.03125
+----
+Local Grid Information:
+Number of Cells: 16 16 16
+Lower Bound: 0 -0.5 -0.5
+Upper Bound: 0.5 0 0
  Created new tasks for rank 5
  MPI coordinates for rank 5 -> 1 0 1
 ---------------------- DEBUG GRID RANK 5----------------------
@@ -56,8 +51,6 @@ Cell Size: 0.03125 0.03125 0.03125
 Local Grid Information:
 Number of Cells: 16 16 16
 Lower Bound: 0 -0.5 0
-Upper Bound: 0.5 0 0.5
-Cell Size: 0.03125 0.03125 0.03125
  Created new tasks for rank 6
  MPI coordinates for rank 6 -> 1 1 0
 ---------------------- DEBUG GRID RANK 6----------------------
@@ -79,6 +72,13 @@ Global Grid Information:
 Number of Cells: 32 32 32
 Lower Bound: -0.5 -0.5 -0.5
 Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.03125 0.03125 0.03125
+----
+Local Grid Information:
+Number of Cells: 16 16 16
+Lower Bound: 0 0 0
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.03125 0.03125 0.03125
  Created new tasks for rank 0
  MPI coordinates for rank 0 -> 0 0 0
 ---------------------- DEBUG GRID RANK 0----------------------
@@ -93,12 +93,14 @@ Number of Cells: 16 16 16
 Lower Bound: -0.5 -0.5 -0.5
 Upper Bound: 0 0 0
 Cell Size: 0.03125 0.03125 0.03125
+Upper Bound: 0 0 0.5
 Cell Size: 0.03125 0.03125 0.03125
-----
-Local Grid Information:
-Number of Cells: 16 16 16
-Lower Bound: 0 0 0
----------------------- DEBUG GRID RANK 4----------------------
+Upper Bound: 0 0.5 0.5
+Cell Size: 0.03125 0.03125 0.03125
+Cell Size: 0.03125 0.03125 0.03125
+Upper Bound: 0.5 0 0.5
+Cell Size: 0.03125 0.03125 0.03125
+---------------------- DEBUG GRID RANK 2----------------------
 Global Grid Information:
 Number of Cells: 32 32 32
 Lower Bound: -0.5 -0.5 -0.5
@@ -107,16 +109,14 @@ Cell Size: 0.03125 0.03125 0.03125
 ----
 Local Grid Information:
 Number of Cells: 16 16 16
-Lower Bound: 0 -0.5 -0.5
-Upper Bound: 0.5 0 0
+Lower Bound: -0.5 0 -0.5
+Upper Bound: 0 0.5 0
 Cell Size: 0.03125 0.03125 0.03125
-Upper Bound: 0.5 0.5 0.5
-Cell Size: 0.03125 0.03125 0.03125
-[n001:1546814] *** An error occurred in MPI_Allreduce
-[n001:1546814] *** reported by process [2601713665,2]
-[n001:1546814] *** on communicator MPI_COMM_WORLD
-[n001:1546814] *** MPI_ERR_COMM: invalid communicator
-[n001:1546814] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
-[n001:1546814] ***    and potentially your MPI job)
-[n001.intern.lcc3.intra.uibk.ac.at:1546808] 7 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal
-[n001.intern.lcc3.intra.uibk.ac.at:1546808] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ Volume of Sedov region: 0.00415039 in 136 cells
+ Volume of Sedov region: 0.00415039 in 136 cells
+ Volume of Sedov region: 0.00415039 in 136 cells
+ Volume of Sedov region: 0.00415039 in 136 cells
+ Volume of Sedov region: 0.00415039 in 136 cells
+ Volume of Sedov region: 0.00415039 in 136 cells
+ Volume of Sedov region: 0.00415039 in 136 cells
+ Volume of Sedov region: 0.00415039 in 136 cells

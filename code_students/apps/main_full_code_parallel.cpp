@@ -92,8 +92,6 @@ int main(int argc, char **argv) {
 	// std::cout << "Left neighbor: " << left_rank << std::endl;
 	// std::cout << "Right neighbor: " << right_rank << std::endl;
 
-	// MPI_Finalize();
-	// return 0;
 	// Get number of Sedov cells
 	Sedov_volume = 0.0;
 	int num_Sedov_cells_local = 0;
@@ -117,17 +115,11 @@ int main(int argc, char **argv) {
 	// Gather the number of Sedov cells and the total volume
 	int total_Sedov_cells = 0;
 	double total_Sedov_volume = 0.0;
-	MPI_Reduce(&num_Sedov_cells_local, &total_Sedov_cells, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-	MPI_Reduce(&Sedov_volume, &total_Sedov_volume, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+	MPI_Allreduce(&num_Sedov_cells_local, &total_Sedov_cells, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+	MPI_Allreduce(&Sedov_volume, &total_Sedov_volume, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
-	// Print the volume of Sedov region on rank 0
-	if (world_rank == 0) {
-		std::cout << " Volume of Sedov region: " << total_Sedov_volume << " in " << total_Sedov_cells << " cells\n";
-	}
-
-	// Broadcast the total number of Sedov cells and the total volume to all ranks
-	MPI_Bcast(&total_Sedov_cells, 1, MPI_INT, 0, MPI_COMM_WORLD);
-	MPI_Bcast(&total_Sedov_volume, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+	// Print the volume of Sedov region on all ranks
+	std::cout << " Volume of Sedov region: " << total_Sedov_volume << " in " << total_Sedov_cells << " cells\n";
 
 	MPI_Finalize();
 	return 0;
