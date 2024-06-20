@@ -11,7 +11,7 @@ public:
 	                            const std::vector<size_t> &rank_shifts, std::string dataset_name);
 
 private:
-	void open_file() override;
+	void open_file();
 	hid_t plist_file_id, plist_dset_id;
 	int rank;
 };
