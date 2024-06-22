@@ -58,6 +58,14 @@ void init_linear(fluid_cell &fluid, double x_position, double y_position, double
 	fluid.fluid_data[2] = z_position;
 }
 
+void mpiErrorHandler(MPI_Comm* comm, int* error_code)
+{
+	char error_string[MPI_MAX_ERROR_STRING];
+	int length;
+	MPI_Error_string(*error_code, error_string, &length);
+	std::cerr << "MPI Error: " << error_string << std::endl;
+	MPI_Abort(*comm, *error_code);
+}
 
 int main(int argc, char *argv[]) {
 
@@ -65,6 +73,8 @@ int main(int argc, char *argv[]) {
 	MPI_Init(&argc, &argv);
 	MPI_Comm_size(MPI_COMM_WORLD, &ntasks);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	MPI_Comm_set_errhandler(MPI_COMM_WORLD, MPI_ERRORS_RETURN);
+	
 	if(ntasks == 0) {
 		std::cout << "World size: " << ntasks << std::endl;
 	}

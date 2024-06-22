@@ -1,4 +1,5 @@
 #include "solver/finite_volume_solver.hpp"
+#include "mpi.h"
 #include "util/matrix.hpp"
 #include <cmath>
 #ifdef PARALLEL_VERSION
@@ -156,7 +157,8 @@ void finite_volume_solver::set_initial_conditions(grid_3D &spatial_grid, fluid &
 	apply_boundary_conditions(spatial_grid, current_fluid);
 }
 
-void finite_volume_solver::assign_data_from_buffer(std::vector<double>& buffer, fluid& current_fluid, size_t i_field, int start_ix, int start_iy, int start_iz, grid_3D &spatial_grid) {
+void finite_volume_solver::assign_data_from_buffer(std::vector<double> &buffer, fluid &current_fluid, size_t i_field, int start_ix, int start_iy, int start_iz,
+                                                   grid_3D &spatial_grid) {
 	size_t i_buff = 0;
 	for (int ix = 0; ix < 2; ix++) {
 		for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
@@ -179,13 +181,13 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 	int Nz = spatial_grid.get_num_cells(2);
 
 	if (boundary_type == parallelisation::BoundaryType::constant_extrapolation) {
-
 		for (size_t i_field = 0; i_field < current_fluid.fluid_data.size(); ++i_field) {
 
 			// Lower x boundary
 			// first get data from neighbouring rank on the left and send data to rank on the right.
 			// where necessary, do parallel boundaries
 			// Prepare buffer -> size 2 x Ny x Nz
+			std::cout << "Rank " << rank << " is working on lower x boundary\n";
 			int size_buff = 2 * Ny * Nz;
 			std::vector<double> buff_send_x(size_buff);
 			std::vector<double> buff_recv_x(size_buff);
@@ -217,6 +219,8 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 
 			MPI_Status status;
 			// Send and receive data
+			std::cout << "Rank " << rank << " is sending buffer size: " << size_buff << ", Destination rank: " << dest_rank << ", Send tag: " << tag_send
+			          << " and receiving buffer size: " << size_buff << ", Source rank: " << src_rank << ", Receive tag: " << tag_recv << std::endl;
 			MPI_Sendrecv(&buff_send_x[0], size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_x[0], size_buff, MPI_DOUBLE, src_rank, tag_recv,
 			             parallel_handler.comm3D, &status);
 			// MPI_Sendrecv(&buff_send_x[0], size_buff, MPI_DOUBLE, dest_rank, tag_send,
@@ -256,6 +260,8 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			}
 
 			// Send and receive data
+			std::cout << "Rank " << rank << " is sending buffer size: " << size_buff << ", Destination rank: " << dest_rank << ", Send tag: " << tag_send
+			          << " and receiving buffer size: " << size_buff << ", Source rank: " << src_rank << ", Receive tag: " << tag_recv << std::endl;
 			MPI_Sendrecv(&buff_send_x[0], size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_x[0], size_buff, MPI_DOUBLE, src_rank, tag_recv,
 			             parallel_handler.comm3D, &status);
 
@@ -299,6 +305,8 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			}
 
 			// Send and receive data
+			std::cout << "Rank " << rank << " is sending buffer size: " << size_buff << ", Destination rank: " << dest_rank << ", Send tag: " << tag_send
+			          << " and receiving buffer size: " << size_buff << ", Source rank: " << src_rank << ", Receive tag: " << tag_recv << std::endl;
 			MPI_Sendrecv(&buff_send_y[0], size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_y[0], size_buff, MPI_DOUBLE, src_rank, tag_recv,
 			             parallel_handler.comm3D, &status);
 
@@ -337,6 +345,8 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			}
 
 			// Send and receive data
+			std::cout << "Rank " << rank << " is sending buffer size: " << size_buff << ", Destination rank: " << dest_rank << ", Send tag: " << tag_send
+			          << " and receiving buffer size: " << size_buff << ", Source rank: " << src_rank << ", Receive tag: " << tag_recv << std::endl;
 			MPI_Sendrecv(&buff_send_y[0], size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_y[0], size_buff, MPI_DOUBLE, src_rank, tag_recv,
 			             parallel_handler.comm3D, &status);
 
@@ -359,6 +369,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			// TBD by students
 
 			// ---------------- by me
+			std::cout << "Rank " << rank << " is working on lower z boundary\n";
 			size_buff = 2 * Nx * Ny;
 			std::vector<double> buff_send_z(size_buff);
 			std::vector<double> buff_recv_z(size_buff);
@@ -382,8 +393,10 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			}
 
 			// Send and receive data
-			MPI_Sendrecv(&buff_send_z, size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_z, size_buff, MPI_DOUBLE, src_rank, tag_recv, parallel_handler.comm3D,
-			             &status);
+			std::cout << "Rank " << rank << " is sending buffer size: " << size_buff << ", Destination rank: " << dest_rank << ", Send tag: " << tag_send
+			          << " and receiving buffer size: " << size_buff << ", Source rank: " << src_rank << ", Receive tag: " << tag_recv << std::endl;
+			MPI_Sendrecv(&buff_send_z[0], size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_z[0], size_buff, MPI_DOUBLE, src_rank, tag_recv,
+			             parallel_handler.comm3D, &status);
 
 			// Finally, assign data - either directly or from receive buffer
 			if (parallel_handler.get_front() == MPI_PROC_NULL) {
@@ -399,6 +412,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			}
 
 			// upper z boundary
+			std::cout << "Rank " << rank << " is working on upper z boundary\n";
 			dest_rank = parallel_handler.get_bottom();
 			src_rank = parallel_handler.get_top();
 
@@ -417,6 +431,8 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			}
 
 			// Send and receive data
+			std::cout << "Rank " << rank << " is sending buffer size: " << size_buff << ", Destination rank: " << dest_rank << ", Send tag: " << tag_send
+			          << " and receiving buffer size: " << size_buff << ", Source rank: " << src_rank << ", Receive tag: " << tag_recv << std::endl;
 			MPI_Sendrecv(&buff_send_z, size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_z, size_buff, MPI_DOUBLE, src_rank, tag_recv, parallel_handler.comm3D,
 			             &status);
 
@@ -432,6 +448,8 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			} else {
 				assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, Nz, spatial_grid);
 			}
+
+			std::cout << "Rank " << rank << " has finished applying boundary conditions\n";
 		}
 	}
 }

@@ -121,9 +121,25 @@ Cell Size: 0.0078125 0.0078125 0.0078125
 ---------------------- end of DEBUG GRID RANK 0----------------------
  resizing field 0:
  resizing field 0:
+ resizing field 0:
  Volume of Sedov region: 0.00416946 in 8744 cells
  resizing field 0:
  resizing field 0:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ resizing field 0:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 3:
  resizing field 0:
  -> 314432
  resizing field 1:
@@ -132,22 +148,22 @@ Cell Size: 0.0078125 0.0078125 0.0078125
  -> 314432
  resizing field 3:
  -> 314432
- resizing field 4:
+ resizing field 1:
  -> 314432
- resizing field 5:
+ resizing field 2:
  -> 314432
+ resizing field 3:
  resizing field 0:
  -> 314432
  resizing field 1:
  -> 314432
  resizing field 2:
  -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
  resizing field 3:
- -> 314432
- resizing field 4:
- -> 314432
- resizing field 5:
- -> 314432
  -> 314432
  resizing field 1:
  -> 314432
@@ -157,78 +173,141 @@ Cell Size: 0.0078125 0.0078125 0.0078125
  -> 314432
  resizing field 4:
  -> 314432
- resizing field 5:
+ resizing field 4:
  -> 314432
- resizing field 0:
- -> 314432
- resizing field 1:
- -> 314432
- resizing field 2:
+ resizing field 4:
  -> 314432
  resizing field 3:
  -> 314432
  resizing field 4:
  -> 314432
+ resizing field 3:
+ -> 314432
  resizing field 5:
  -> 314432
- -> 314432
- resizing field 1:
- -> 314432
- resizing field 2:
+ resizing field 4:
  -> 314432
  resizing field 3:
+ -> 314432
+ resizing field 5:
  -> 314432
  resizing field 4:
  -> 314432
  resizing field 5:
  -> 314432
- resizing field 0:
- -> 314432
- resizing field 1:
- -> 314432
- resizing field 2:
- -> 314432
- resizing field 3:
+ resizing field 5:
  -> 314432
  resizing field 4:
+ -> 314432
+ resizing field 4:
+ -> 314432
  -> 314432
  resizing field 5:
  -> 314432
  -> 314432
- resizing field 1:
- -> 314432
- resizing field 2:
- -> 314432
- resizing field 3:
- -> 314432
- resizing field 4:
  -> 314432
  resizing field 5:
  -> 314432
  -> 314432
- resizing field 1:
  -> 314432
- resizing field 2:
- -> 314432
- resizing field 3:
- -> 314432
- resizing field 4:
  -> 314432
  resizing field 5:
+ -> 314432
+ resizing field 5:
+ -> 314432
  -> 314432
 Rank 6 is applying boundary conditions in parallel
-Rank 2 is applying boundary conditions in parallel
-Rank 0 is applying boundary conditions in parallel
+Rank 6 is working on lower x boundary
+Rank 6 is sending buffer size: 8192, Destination rank: -2, Send tag: 0 and receiving buffer size: 8192, Source rank: 2, Receive tag: 0
 Rank 4 is applying boundary conditions in parallel
-Rank 1 is applying boundary conditions in parallel
-Rank 3 is applying boundary conditions in parallel
-[n001:3080479:0:3080479] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fffe99a3368)
-[n001:3080477:0:3080477] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffd2b1ba388)
-[n001:3080481:0:3080481] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fff7a07b268)
-[n001:3080483:0:3080483] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fffb5e46968)
-Rank 5 is applying boundary conditions in parallel
+Rank 4 is working on lower x boundary
+Rank 2 is applying boundary conditions in parallel
+Rank 2 is working on lower x boundary
+Rank 0 is applying boundary conditions in parallel
+Rank 0 is working on lower x boundary
+Rank 4 is sending buffer size: 8192, Destination rank: -2, Send tag: 0 and receiving buffer size: 8192, Source rank: 0, Receive tag: 0
+Rank 0 is sending buffer size: 8192, Destination rank: 4, Send tag: 0 and receiving buffer size: 8192, Source rank: -2, Receive tag: 0
+Rank 2 is sending buffer size: 8192, Destination rank: 6, Send tag: 0 and receiving buffer size: 8192, Source rank: -2, Receive tag: 0
 Rank 7 is applying boundary conditions in parallel
-==== backtrace (tid:3080481) ====
+Rank 7 is working on lower x boundary
+Rank 6 is sending buffer size: 8192, Destination rank: 2, Send tag: 1 and receiving buffer size: 8192, Source rank: -2, Receive tag: 1
+Rank 3 is applying boundary conditions in parallel
+Rank 3 is working on lower x boundary
+Rank 2 is sending buffer size: 8192, Destination rank: -2, Send tag: 1 and receiving buffer size: 8192, Source rank: 6, Receive tag: 1
+Rank 4 is sending buffer size: 8192, Destination rank: 0, Send tag: 1 and receiving buffer size: 8192, Source rank: -2, Receive tag: 1
+Rank 0 is sending buffer size: 8192, Destination rank: -2, Send tag: 1 and receiving buffer size: 8192, Source rank: 4, Receive tag: 1
+Rank 7 is sending buffer size: 8192, Destination rank: -2, Send tag: 0 and receiving buffer size: 8192, Source rank: 3, Receive tag: 0
+Rank 3 is sending buffer size: 8192, Destination rank: 7, Send tag: 0 and receiving buffer size: 8192, Source rank: -2, Receive tag: 0
+Rank 0 is sending buffer size: 8192, Destination rank: -2, Send tag: 2 and receiving buffer size: 8192, Source rank: 2, Receive tag: 2
+Rank 4 is sending buffer size: 8192, Destination rank: -2, Send tag: 2 and receiving buffer size: 8192, Source rank: 6, Receive tag: 2
+Rank 6 is sending buffer size: 8192, Destination rank: 4, Send tag: 2 and receiving buffer size: 8192, Source rank: -2, Receive tag: 2
+Rank 2 is sending buffer size: 8192, Destination rank: 0, Send tag: 2 and receiving buffer size: 8192, Source rank: -2, Receive tag: 2
+Rank 7 is sending buffer size: 8192, Destination rank: 3, Send tag: 1 and receiving buffer size: 8192, Source rank: -2, Receive tag: 1
+Rank 3 is sending buffer size: 8192, Destination rank: -2, Send tag: 1 and receiving buffer size: 8192, Source rank: 7, Receive tag: 1
+Rank 2 is sending buffer size: 8192, Destination rank: -2, Send tag: 3 and receiving buffer size: 8192, Source rank: 0, Receive tag: 3
+Rank 0 is sending buffer size: 8192, Destination rank: 2, Send tag: 3 and receiving buffer size: 8192, Source rank: -2, Receive tag: 3
+Rank 4 is sending buffer size: 8192, Destination rank: 6, Send tag: 3 and receiving buffer size: 8192, Source rank: -2, Receive tag: 3
+Rank 6 is sending buffer size: 8192, Destination rank: -2, Send tag: 3 and receiving buffer size: 8192, Source rank: 4, Receive tag: 3
+Rank 7 is sending buffer size: 8192, Destination rank: 5, Send tag: 2 and receiving buffer size: 8192, Source rank: -2, Receive tag: 2
+Rank 2 is working on lower z boundary
+Rank 0 is working on lower z boundary
+Rank 4 is working on lower z boundary
+Rank 6 is working on lower z boundary
+Rank 3 is sending buffer size: 8192, Destination rank: 1, Send tag: 2 and receiving buffer size: 8192, Source rank: -2, Receive tag: 2
+Rank 6 is sending buffer size: 8192, Destination rank: 7, Send tag: 4 and receiving buffer size: 8192, Source rank: -2, Receive tag: 4
+Rank 4 is sending buffer size: 8192, Destination rank: 5, Send tag: 4 and receiving buffer size: 8192, Source rank: -2, Receive tag: 4
+Rank 7 is sending buffer size: 8192, Destination rank: -2, Send tag: 3 and receiving buffer size: 8192, Source rank: 5, Receive tag: 3
+Rank 2 is sending buffer size: 8192, Destination rank: 3, Send tag: 4 and receiving buffer size: 8192, Source rank: -2, Receive tag: 4
+Rank 0 is sending buffer size: 8192, Destination rank: 1, Send tag: 4 and receiving buffer size: 8192, Source rank: -2, Receive tag: 4
+Rank 3 is sending buffer size: 8192, Destination rank: -2, Send tag: 3 and receiving buffer size: 8192, Source rank: 1, Receive tag: 3
+Rank 0 is working on upper z boundary
+Rank 4 is working on upper z boundary
+Rank 2 is working on upper z boundary
+Rank 0 is sending buffer size: 8192, Destination rank: -2, Send tag: 5 and receiving buffer size: 8192, Source rank: 1, Receive tag: 5
+Rank 4 is sending buffer size: 8192, Destination rank: -2, Send tag: 5 and receiving buffer size: 8192, Source rank: 5, Receive tag: 5
+Rank 6 is working on upper z boundary
+Rank 2 is sending buffer size: 8192, Destination rank: -2, Send tag: 5 and receiving buffer size: 8192, Source rank: 3, Receive tag: 5
+Rank 6 is sending buffer size: 8192, Destination rank: -2, Send tag: 5 and receiving buffer size: 8192, Source rank: 7, Receive tag: 5
+Rank 1 is applying boundary conditions in parallel
+Rank 1 is working on lower x boundary
+Rank 5 is applying boundary conditions in parallel
+Rank 5 is working on lower x boundary
+Rank 1 is sending buffer size: 8192, Destination rank: 5, Send tag: 0 and receiving buffer size: 8192, Source rank: -2, Receive tag: 0
+Rank 5 is sending buffer size: 8192, Destination rank: -2, Send tag: 0 and receiving buffer size: 8192, Source rank: 1, Receive tag: 0
+Rank 1 is sending buffer size: 8192, Destination rank: -2, Send tag: 1 and receiving buffer size: 8192, Source rank: 5, Receive tag: 1
+Rank 5 is sending buffer size: 8192, Destination rank: 1, Send tag: 1 and receiving buffer size: 8192, Source rank: -2, Receive tag: 1
+Rank 1 is sending buffer size: 8192, Destination rank: -2, Send tag: 2 and receiving buffer size: 8192, Source rank: 3, Receive tag: 2
+Rank 5 is sending buffer size: 8192, Destination rank: -2, Send tag: 2 and receiving buffer size: 8192, Source rank: 7, Receive tag: 2
+Rank 1 is sending buffer size: 8192, Destination rank: 3, Send tag: 3 and receiving buffer size: 8192, Source rank: -2, Receive tag: 3
+Rank 5 is sending buffer size: 8192, Destination rank: 7, Send tag: 3 and receiving buffer size: 8192, Source rank: -2, Receive tag: 3
+Rank 3 is working on lower z boundary
+Rank 7 is working on lower z boundary
+Rank 1 is working on lower z boundary
+Rank 5 is working on lower z boundary
+Rank 3 is sending buffer size: 8192, Destination rank: -2, Send tag: 4 and receiving buffer size: 8192, Source rank: 2, Receive tag: 4
+Rank 7 is sending buffer size: 8192, Destination rank: -2, Send tag: 4 and receiving buffer size: 8192, Source rank: 6, Receive tag: 4
+Rank 1 is sending buffer size: 8192, Destination rank: -2, Send tag: 4 and receiving buffer size: 8192, Source rank: 0, Receive tag: 4
+Rank 5 is sending buffer size: 8192, Destination rank: -2, Send tag: 4 and receiving buffer size: 8192, Source rank: 4, Receive tag: 4
+Rank 7 is working on upper z boundary
+Rank 3 is working on upper z boundary
+Rank 1 is working on upper z boundary
+Rank 5 is working on upper z boundary
+Rank 3 is sending buffer size: 8192, Destination rank: 2, Send tag: 5 and receiving buffer size: 8192, Source rank: -2, Receive tag: 5
+Rank 7 is sending buffer size: 8192, Destination rank: 6, Send tag: 5 and receiving buffer size: 8192, Source rank: -2, Receive tag: 5
+[n001:3096206:0:3096206] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffdba672888)
+[n001:3096202:0:3096202] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffeea41f678)
+[n001:3096205:0:3096205] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffe25e095f0)
+Rank 1 is sending buffer size: 8192, Destination rank: 0, Send tag: 5 and receiving buffer size: 8192, Source rank: -2, Receive tag: 5
+Rank 5 is sending buffer size: 8192, Destination rank: 4, Send tag: 5 and receiving buffer size: 8192, Source rank: -2, Receive tag: 5
+[n001:3096199:0:3096199] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffd81b36000)
+[n001:3096200:0:3096200] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffe70ada7d8)
+[n001:3096203:0:3096203] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fffa064c250)
+[n001:3096204:0:3096204] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffda0f5da58)
+BFD: Dwarf Error: Can't find .debug_ranges section.
+BFD: Dwarf Error: Can't find .debug_ranges section.
+BFD: Dwarf Error: Can't find .debug_ranges section.
+BFD: Dwarf Error: Can't find .debug_ranges section.
+==== backtrace (tid:3096206) ====
  0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
  1 0x0000000000012cf0 __funlockfile()  :0
  2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
@@ -239,13 +318,13 @@ Rank 7 is applying boundary conditions in parallel
  7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
  8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
  9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x0000000000409d87 finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040d1a6 finite_volume_solver::run()  ???:0
-12 0x0000000000403f2d main()  ???:0
+10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
+11 0x000000000040ddb6 finite_volume_solver::run()  ???:0
+12 0x00000000004040dd main()  ???:0
 13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040439e _start()  ???:0
+14 0x000000000040455e _start()  ???:0
 =================================
-==== backtrace (tid:3080483) ====
+==== backtrace (tid:3096202) ====
  0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
  1 0x0000000000012cf0 __funlockfile()  :0
  2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
@@ -256,30 +335,39 @@ Rank 7 is applying boundary conditions in parallel
  7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
  8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
  9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x0000000000409d87 finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040d1a6 finite_volume_solver::run()  ???:0
-12 0x0000000000403f2d main()  ???:0
+10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
+11 0x000000000040ddb6 finite_volume_solver::run()  ???:0
+12 0x00000000004040dd main()  ???:0
 13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040439e _start()  ???:0
+14 0x000000000040455e _start()  ???:0
 =================================
-==== backtrace (tid:3080477) ====
+==== backtrace (tid:3096205) ====
  0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
  1 0x0000000000012cf0 __funlockfile()  :0
- 2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
- 3 0x00000000000248a3 ucp_dt_pack()  ???:0
- 4 0x000000000002e6b2 ucp_tag_offload_unexp_eager()  ???:0
- 5 0x00000000000148e9 uct_mm_ep_am_bcopy()  ???:0
- 6 0x000000000002e9c9 ucp_tag_offload_unexp_eager()  ???:0
- 7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
- 8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
- 9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x0000000000409d87 finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040d1a6 finite_volume_solver::run()  ???:0
-12 0x0000000000403f2d main()  ???:0
-13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040439e _start()  ???:0
+ 2 0x00000000000370de __memcpy_sse2_unaligned_erms()  :0
+ 3 0x000000000002ac32 ucp_eager_middle_handler()  ???:0
+ 4 0x0000000000012d59 uct_mm_iface_progress()  ???:0
+ 5 0x000000000002328a ucp_worker_progress()  ???:0
+ 6 0x00000000001a48f7 mca_pml_ucx_progress()  ???:0
+ 7 0x000000000005d95c opal_progress()  ???:0
+ 8 0x0000000000077c85 ompi_request_default_wait()  ???:0
+ 9 0x00000000000b2cc9 PMPI_Sendrecv()  ???:0
+10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
 =================================
-==== backtrace (tid:3080479) ====
+==== backtrace (tid:3096203) ====
+ 0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
+ 1 0x0000000000012cf0 __funlockfile()  :0
+ 2 0x00000000000370de __memcpy_sse2_unaligned_erms()  :0
+ 3 0x000000000002ac32 ucp_eager_middle_handler()  ???:0
+ 4 0x0000000000012d59 uct_mm_iface_progress()  ???:0
+ 5 0x000000000002328a ucp_worker_progress()  ???:0
+ 6 0x00000000001a48f7 mca_pml_ucx_progress()  ???:0
+ 7 0x000000000005d95c opal_progress()  ???:0
+ 8 0x0000000000077c85 ompi_request_default_wait()  ???:0
+ 9 0x00000000000b2cc9 PMPI_Sendrecv()  ???:0
+10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
+=================================
+==== backtrace (tid:3096204) ====
  0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
  1 0x0000000000012cf0 __funlockfile()  :0
  2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
@@ -290,35 +378,52 @@ Rank 7 is applying boundary conditions in parallel
  7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
  8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
  9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x0000000000409d87 finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040d1a6 finite_volume_solver::run()  ???:0
-12 0x0000000000403f2d main()  ???:0
+10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
+11 0x000000000040ddb6 finite_volume_solver::run()  ???:0
+12 0x00000000004040dd main()  ???:0
 13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040439e _start()  ???:0
+14 0x000000000040455e _start()  ???:0
+==== backtrace (tid:3096200) ====
+ 0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
+ 1 0x0000000000012cf0 __funlockfile()  :0
+ 2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
+ 3 0x00000000000248a3 ucp_dt_pack()  ???:0
+ 4 0x000000000002e6b2 ucp_tag_offload_unexp_eager()  ???:0
+ 5 0x00000000000148e9 uct_mm_ep_am_bcopy()  ???:0
+ 6 0x000000000002e9c9 ucp_tag_offload_unexp_eager()  ???:0
+ 7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
+ 8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
+ 9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
+10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
+11 0x000000000040ddb6 finite_volume_solver::run()  ???:0
+12 0x00000000004040dd main()  ???:0
+13 0x000000000003ad85 __libc_start_main()  ???:0
+14 0x000000000040455e _start()  ???:0
+=================================
 =================================
 --------------------------------------------------------------------------
 Primary job  terminated normally, but 1 process returned
 a non-zero exit code. Per user-direction, the job has been aborted.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-mpiexec noticed that process rank 2 with PID 3080479 on node n001 exited on signal 11 (Segmentation fault).
+mpiexec noticed that process rank 0 with PID 3096199 on node n001 exited on signal 11 (Segmentation fault).
 --------------------------------------------------------------------------
 Command exited with non-zero status 139
 	Command being timed: "mpiexec -n 8 ./code_parallel/build/apps/run_full_code.parallel"
-	User time (seconds): 0.09
-	System time (seconds): 0.08
-	Percent of CPU this job got: 36%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.51
+	User time (seconds): 0.12
+	System time (seconds): 0.11
+	Percent of CPU this job got: 37%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.62
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 45020
+	Maximum resident set size (kbytes): 49640
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 134
-	Minor (reclaiming a frame) page faults: 8902
-	Voluntary context switches: 883
-	Involuntary context switches: 27
+	Major (requiring I/O) page faults: 136
+	Minor (reclaiming a frame) page faults: 8704
+	Voluntary context switches: 798
+	Involuntary context switches: 30
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 8
