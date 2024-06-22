@@ -30,6 +30,7 @@ public:
 	int run(grid_3D &spatial_grid, fluid &current_fluid, double time_final, double delta_t_output);
 	void set_init_function(std::function<void(fluid_cell &, double, double, double)>);
 	matrix<double, 3> get_data_computational_volume(grid_3D &spatial_grid, fluid &current_fluid, int index_data);
+	void assign_data_from_buffer(std::vector<double>& buffer, fluid& current_fluid, size_t i_field, int start_ix, int start_iy, int start_iz, grid_3D &spatial_grid);
 	void set_verbosity(int verbosity);
 
 private:

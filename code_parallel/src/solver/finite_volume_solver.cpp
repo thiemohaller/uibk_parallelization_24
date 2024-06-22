@@ -111,19 +111,13 @@ int finite_volume_solver::run(grid_3D &spatial_grid, fluid &current_fluid, doubl
 
 		// Do individual Runge-Kutta steps
 		int n_RK_steps = time_stepper.get_number_substeps();
-
 		for (int i_RK_step = 0; i_RK_step < n_RK_steps; ++i_RK_step) {
-
 			singlestep(spatial_grid, current_fluid, fluid_changes);
-
 			// Transform to conservative variables
 			transform_fluid_to_conservative(current_fluid);
-
 			time_stepper.do_sub_step(spatial_grid, fluid_changes, current_fluid, delta_t, i_RK_step);
-
 			// Transform back to characteristic variables
 			transform_fluid_to_characteristic(current_fluid);
-
 			apply_boundary_conditions(spatial_grid, current_fluid);
 		}
 
@@ -153,7 +147,6 @@ void finite_volume_solver::set_initial_conditions(grid_3D &spatial_grid, fluid &
 			double y_position = spatial_grid.y_grid.get_center(iy);
 			for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
 				double z_position = spatial_grid.z_grid.get_center(iz);
-
 				init_function(quantities_local, x_position, y_position, z_position);
 				current_fluid.set_cell_values(quantities_local, ix, iy, iz);
 			}
@@ -163,9 +156,23 @@ void finite_volume_solver::set_initial_conditions(grid_3D &spatial_grid, fluid &
 	apply_boundary_conditions(spatial_grid, current_fluid);
 }
 
+void finite_volume_solver::assign_data_from_buffer(std::vector<double>& buffer, fluid& current_fluid, size_t i_field, int start_ix, int start_iy, int start_iz, grid_3D &spatial_grid) {
+	size_t i_buff = 0;
+	for (int ix = 0; ix < 2; ix++) {
+		for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
+			for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
+				current_fluid.fluid_data[i_field](start_ix + ix, start_iy + iy, start_iz + iz) = buffer[i_buff];
+				i_buff++;
+			}
+		}
+	}
+}
+
 #ifdef PARALLEL_VERSION
 
 void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, fluid &current_fluid) {
+
+	std::cout << "Rank " << rank << " is applying boundary conditions in parallel\n";
 
 	int Nx = spatial_grid.get_num_cells(0);
 	int Ny = spatial_grid.get_num_cells(1);
@@ -176,11 +183,8 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 		for (size_t i_field = 0; i_field < current_fluid.fluid_data.size(); ++i_field) {
 
 			// Lower x boundary
-
 			// first get data from neighbouring rank on the left and send data to rank on the right.
-
 			// where necessary, do parallel boundaries
-
 			// Prepare buffer -> size 2 x Ny x Nz
 			int size_buff = 2 * Ny * Nz;
 			std::vector<double> buff_send_x(size_buff);
@@ -228,21 +232,11 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				i_buff = 0;
-				for (int ix = 0; ix < 2; ++ix) {
-					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
-						for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
-							current_fluid.fluid_data[i_field](ix - 2, iy, iz) = buff_recv_x[i_buff];
-							i_buff++;
-						}
-					}
-				}
+				assign_data_from_buffer(buff_recv_x, current_fluid, i_field, -2, 0, 0, spatial_grid);
 			}
 
 			// Upper x boundary
-
 			// next, get data from neighbouring rank on the right and send data to rank on the left.
-
 			// get distination rank
 			dest_rank = parallel_handler.get_left();
 			src_rank = parallel_handler.get_right();
@@ -275,23 +269,12 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				i_buff = 0;
-				for (int ix = 0; ix < 2; ix++) {
-					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
-						for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
-							current_fluid.fluid_data[i_field](Nx + ix, iy, iz) = buff_recv_x[i_buff];
-							i_buff++;
-						}
-					}
-				}
+				assign_data_from_buffer(buff_recv_x, current_fluid, i_field, Nx, 0, 0, spatial_grid);
 			}
 
 			// Lower y boundary
-
 			// first, get data from neighbouring rank at the front and send data to rank at the back.
-
 			// where necessary, do parallel boundaries
-
 			// Prepare buffer -> size 2 x Nx x Nz
 			size_buff = 2 * Nx * Nz;
 			std::vector<double> buff_send_y(size_buff);
@@ -329,23 +312,12 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				i_buff = 0;
-				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
-					for (int iy = 0; iy < 2; ++iy) {
-						for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
-							current_fluid.fluid_data[i_field](ix, iy - 2, iz) = buff_recv_y[i_buff];
-							i_buff++;
-						}
-					}
-				}
+				assign_data_from_buffer(buff_recv_y, current_fluid, i_field, 0, -2, 0, spatial_grid);
 			}
 
 			// Upper y boundary
-
 			// next, get data from neighbouring rank at the back and send data to rank in front.
-
 			// where necessary, do parallel boundaries
-
 			// get distination rank
 			dest_rank = parallel_handler.get_front();
 			src_rank = parallel_handler.get_back();
@@ -378,15 +350,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				i_buff = 0;
-				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
-					for (int iy = 0; iy < 2; ++iy) {
-						for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
-							current_fluid.fluid_data[i_field](ix, Ny + iy, iz) = buff_recv_y[i_buff];
-							i_buff++;
-						}
-					}
-				}
+				assign_data_from_buffer(buff_recv_y, current_fluid, i_field, 0, Ny, 0, spatial_grid);
 			}
 
 			// Lower z boundary
@@ -431,15 +395,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				i_buff = 0;
-				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
-					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
-						for (int iz = 0; iz < 2; ++iz) {
-							current_fluid.fluid_data[i_field](ix, iy, iz - 2) = buff_recv_z[i_buff];
-							i_buff++;
-						}
-					}
-				}
+				assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, -2, spatial_grid);
 			}
 
 			// upper z boundary
@@ -474,15 +430,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				i_buff = 0;
-				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
-					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
-						for (int iz = 0; iz < 2; ++iz) {
-							current_fluid.fluid_data[i_field](ix, iy, Nz + iz) = buff_recv_z[i_buff];
-							i_buff++;
-						}
-					}
-				}
+				assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, Nz, spatial_grid);
 			}
 		}
 	}
