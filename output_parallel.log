@@ -1,141 +1,166 @@
- I am using rank 1 of 8
- I am using rank 5 of 8
- I am using rank 7 of 8
- I am using rank 3 of 8
- I am using rank 4 of 8
- I am using rank 6 of 8
- I am using rank 0 of 8
  ning in parallel with 8 tasks 
- Created new tasks for rank 0
- MPI coordinates for rank 0 -> 0 0 0
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0 with 64 cells
- Making linear grid from -0.5 0 with 64 cells
- Making linear grid from -0.5 0 with 64 cells
- Anfang: -0.496094 -0.5
- Ende: -0.00390625 0
- I am using rank 2 of 8
- Created new tasks for rank 2
- MPI coordinates for rank 2 -> 0 1 0
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0 with 64 cells
- Making linear grid from 0 0.5 with 64 cells
- Making linear grid from -0.5 0 with 64 cells
- Anfang: -0.496094 -0.5
- Ende: -0.00390625 0
- Created new tasks for rank 7
- MPI coordinates for rank 7 -> 1 1 1
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from 0 0.5 with 64 cells
- Making linear grid from 0 0.5 with 64 cells
- Making linear grid from 0 0.5 with 64 cells
- Anfang: 0.00390625 0
- Ende: 0.496094 0.5
- Created new tasks for rank 3
- MPI coordinates for rank 3 -> 0 1 1
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0 with 64 cells
- Making linear grid from 0 0.5 with 64 cells
- Making linear grid from 0 0.5 with 64 cells
- Anfang: -0.496094 -0.5
- Ende: -0.00390625 0
  Created new tasks for rank 1
  MPI coordinates for rank 1 -> 0 0 1
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0 with 64 cells
- Making linear grid from -0.5 0 with 64 cells
- Making linear grid from 0 0.5 with 64 cells
- Anfang: -0.496094 -0.5
- Ende: -0.00390625 0
+---------------------- DEBUG GRID RANK 1----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: -0.5 -0.5 0
+Upper Bound: 0 0 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 1----------------------
+ Created new tasks for rank 2
+ MPI coordinates for rank 2 -> 0 1 0
+---------------------- DEBUG GRID RANK 2----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: -0.5 0 -0.5
+Upper Bound: 0 0.5 0
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 2----------------------
+ Created new tasks for rank 3
+ MPI coordinates for rank 3 -> 0 1 1
+---------------------- DEBUG GRID RANK 3----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: -0.5 0 0
+Upper Bound: 0 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 3----------------------
  Created new tasks for rank 4
  MPI coordinates for rank 4 -> 1 0 0
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from 0 0.5 with 64 cells
- Making linear grid from -0.5 0 with 64 cells
- Making linear grid from -0.5 0 with 64 cells
- Anfang: 0.00390625 0
- Ende: 0.496094 0.5
+---------------------- DEBUG GRID RANK 4----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: 0 -0.5 -0.5
+Upper Bound: 0.5 0 0
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 4----------------------
  Created new tasks for rank 5
  MPI coordinates for rank 5 -> 1 0 1
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from 0 0.5 with 64 cells
- Making linear grid from -0.5 0 with 64 cells
- Making linear grid from 0 0.5 with 64 cells
- Anfang: 0.00390625 0
- Ende: 0.496094 0.5
+---------------------- DEBUG GRID RANK 5----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: 0 -0.5 0
+Upper Bound: 0.5 0 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 5----------------------
  Created new tasks for rank 6
  MPI coordinates for rank 6 -> 1 1 0
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from -0.5 0.5 with 128 cells
- Making linear grid from 0 0.5 with 64 cells
- Making linear grid from 0 0.5 with 64 cells
- Making linear grid from -0.5 0 with 64 cells
- Anfang: 0.00390625 0
- Ende: 0.496094 0.5
+---------------------- DEBUG GRID RANK 6----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: 0 0 -0.5
+Upper Bound: 0.5 0.5 0
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 6----------------------
+ Created new tasks for rank 7
+ MPI coordinates for rank 7 -> 1 1 1
+---------------------- DEBUG GRID RANK 7----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: 0 0 0
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 7----------------------
+ Created new tasks for rank 0
+ MPI coordinates for rank 0 -> 0 0 0
+---------------------- DEBUG GRID RANK 0----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0 0 0
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 0----------------------
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
  Volume of Sedov region: 0.00416946 in 8744 cells
  resizing field 0:
  resizing field 0:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 5:
+ -> 314432
  resizing field 0:
- resizing field 0:
- -> 314432
- resizing field 1:
- -> 314432
- resizing field 1:
- -> 314432
- resizing field 1:
- resizing field 0:
- resizing field 0:
- -> 314432
- resizing field 1:
- -> 314432
- resizing field 2:
- -> 314432
- resizing field 2:
- -> 314432
- resizing field 2:
- -> 314432
- resizing field 1:
- resizing field 0:
- -> 314432
- resizing field 1:
- resizing field 0:
- -> 314432
- resizing field 2:
- -> 314432
- resizing field 3:
- -> 314432
- resizing field 3:
- -> 314432
- resizing field 3:
- -> 314432
- resizing field 2:
- -> 314432
- resizing field 1:
- -> 314432
- resizing field 3:
- -> 314432
- resizing field 2:
- -> 314432
- resizing field 3:
- -> 314432
- resizing field 4:
- -> 314432
- resizing field 5:
  -> 314432
  resizing field 1:
  -> 314432
@@ -145,26 +170,23 @@
  -> 314432
  resizing field 4:
  -> 314432
+ resizing field 5:
+ -> 314432
+ -> 314432
+ resizing field 1:
+ -> 314432
  resizing field 2:
  -> 314432
  resizing field 3:
  -> 314432
  resizing field 4:
  -> 314432
- resizing field 4:
- -> 314432
  resizing field 5:
  -> 314432
  -> 314432
- resizing field 4:
+ resizing field 1:
  -> 314432
- resizing field 5:
- -> 314432
- -> 314432
- resizing field 4:
- -> 314432
- resizing field 5:
- -> 314432
+ resizing field 2:
  -> 314432
  resizing field 3:
  -> 314432
@@ -172,23 +194,39 @@
  -> 314432
  resizing field 5:
  -> 314432
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 3:
+ -> 314432
  resizing field 4:
  -> 314432
  resizing field 5:
  -> 314432
  -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 4:
  -> 314432
  resizing field 5:
  -> 314432
- resizing field 5:
- -> 314432
- -> 314432
- -> 314432
-[n001:3067957:0:3067957] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffd605d3208)
-[n001:3067959:0:3067959] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffef558b978)
-[n001:3067961:0:3067961] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffed3dd1fd8)
-[n001:3067963:0:3067963] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffd83062868)
-==== backtrace (tid:3067961) ====
+[n001:3070483:0:3070483] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fff31d32548)
+[n001:3070485:0:3070485] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffcaff62a88)
+[n001:3070481:0:3070481] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffcaf659a48)
+[n001:3070482:0:3070482] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffd9a1064d0)
+[n001:3070479:0:3070479] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffc45ce4df8)
+[n001:3070480:0:3070480] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffec7c0a2e0)
+BFD: Dwarf Error: Can't find .debug_ranges section.
+BFD: Dwarf Error: Can't find .debug_ranges section.
+BFD: Dwarf Error: Can't find .debug_ranges section.
+BFD: Dwarf Error: Can't find .debug_ranges section.
+==== backtrace (tid:3070481) ====
  0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
  1 0x0000000000012cf0 __funlockfile()  :0
  2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
@@ -199,13 +237,13 @@
  7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
  8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
  9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x00000000004096b4 finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040cb16 finite_volume_solver::run()  ???:0
-12 0x000000000040407d main()  ???:0
+10 0x0000000000409c74 finite_volume_solver::apply_boundary_conditions()  ???:0
+11 0x000000000040d0d6 finite_volume_solver::run()  ???:0
+12 0x0000000000403f6d main()  ???:0
 13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040447e _start()  ???:0
+14 0x00000000004043de _start()  ???:0
 =================================
-==== backtrace (tid:3067959) ====
+==== backtrace (tid:3070485) ====
  0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
  1 0x0000000000012cf0 __funlockfile()  :0
  2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
@@ -216,30 +254,47 @@
  7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
  8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
  9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x00000000004096b4 finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040cb16 finite_volume_solver::run()  ???:0
-12 0x000000000040407d main()  ???:0
+10 0x0000000000409c74 finite_volume_solver::apply_boundary_conditions()  ???:0
+11 0x000000000040d0d6 finite_volume_solver::run()  ???:0
+12 0x0000000000403f6d main()  ???:0
 13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040447e _start()  ???:0
+14 0x00000000004043de _start()  ???:0
 =================================
-==== backtrace (tid:3067957) ====
+==== backtrace (tid:3070482) ====
  0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
  1 0x0000000000012cf0 __funlockfile()  :0
- 2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
- 3 0x00000000000248a3 ucp_dt_pack()  ???:0
- 4 0x000000000002e6b2 ucp_tag_offload_unexp_eager()  ???:0
- 5 0x00000000000148e9 uct_mm_ep_am_bcopy()  ???:0
- 6 0x000000000002e9c9 ucp_tag_offload_unexp_eager()  ???:0
- 7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
- 8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
- 9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x00000000004096b4 finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040cb16 finite_volume_solver::run()  ???:0
-12 0x000000000040407d main()  ???:0
-13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040447e _start()  ???:0
+ 2 0x00000000000370de __memcpy_sse2_unaligned_erms()  :0
+ 3 0x000000000002ac32 ucp_eager_middle_handler()  ???:0
+ 4 0x0000000000012d59 uct_mm_iface_progress()  ???:0
+ 5 0x000000000002328a ucp_worker_progress()  ???:0
+ 6 0x00000000001a48f7 mca_pml_ucx_progress()  ???:0
+ 7 0x000000000005d95c opal_progress()  ???:0
+ 8 0x0000000000077c85 ompi_request_default_wait()  ???:0
+ 9 0x00000000000b2cc9 PMPI_Sendrecv()  ???:0
+10 0x0000000000409c74 finite_volume_solver::apply_boundary_conditions()  ???:0
 =================================
-==== backtrace (tid:3067963) ====
+==== backtrace (tid:3070480) ====
+ 0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
+ 1 0x0000000000012cf0 __funlockfile()  :0
+ 2 0x00000000000370de __memcpy_sse2_unaligned_erms()  :0
+ 3 0x000000000002ac32 ucp_eager_middle_handler()  ???:0
+ 4 0x0000000000012d59 uct_mm_iface_progress()  ???:0
+ 5 0x000000000002328a ucp_worker_progress()  ???:0
+ 6 0x00000000001a48f7 mca_pml_ucx_progress()  ???:0
+ 7 0x000000000005d95c opal_progress()  ???:0
+ 8 0x0000000000077c85 ompi_request_default_wait()  ???:0
+ 9 0x00000000000b2cc9 PMPI_Sendrecv()  ???:0
+10 0x0000000000409c74 finite_volume_solver::apply_boundary_conditions()  ???:0
+=================================
+==== backtrace (tid:3070479) ====
+ 0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
+ 1 0x0000000000012cf0 __funlockfile()  :0
+ 2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
+ 3 0x00000000000248a3 ucp_dt_pack()  ???:0
+ 4 0x000000000002e6b2 ucp_tag_offload_unexp_eager()  ???:0
+ 5 0x00000000000148e9 uct_mm_ep_am_bcopy()  ???:0
+ 6 0x000000000002e9c9 ucp_tag_offload_unexp_eager()  ???:0
+==== backtrace (tid:3070483) ====
  0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
  1 0x0000000000012cf0 __funlockfile()  :0
  2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
@@ -250,36 +305,45 @@
  7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
  8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
  9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x00000000004096b4 finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040cb16 finite_volume_solver::run()  ???:0
-12 0x000000000040407d main()  ???:0
+ 7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
+ 8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
+ 9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
+10 0x0000000000409c74 finite_volume_solver::apply_boundary_conditions()  ???:0
+11 0x000000000040d0d6 finite_volume_solver::run()  ???:0
+10 0x0000000000409c74 finite_volume_solver::apply_boundary_conditions()  ???:0
+11 0x000000000040d0d6 finite_volume_solver::run()  ???:0
+12 0x0000000000403f6d main()  ???:0
 13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040447e _start()  ???:0
+12 0x0000000000403f6d main()  ???:0
+13 0x000000000003ad85 __libc_start_main()  ???:0
+14 0x00000000004043de _start()  ???:0
+=================================
+14 0x00000000004043de _start()  ???:0
 =================================
 --------------------------------------------------------------------------
 Primary job  terminated normally, but 1 process returned
 a non-zero exit code. Per user-direction, the job has been aborted.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-mpiexec noticed that process rank 0 with PID 3067957 on node n001 exited on signal 11 (Segmentation fault).
+mpiexec noticed that process rank 3 with PID 3070482 on node n001 exited on signal 11 (Segmentation fault).
 --------------------------------------------------------------------------
 2 total processes killed (some possibly by mpiexec during cleanup)
 Command exited with non-zero status 139
 	Command being timed: "mpiexec -n 8 ./code_parallel/build/apps/run_full_code.parallel"
-	User time (seconds): 0.14
+	User time (seconds): 0.17
 	System time (seconds): 0.14
-	Percent of CPU this job got: 52%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.55
+	Percent of CPU this job got: 56%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.56
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 45036
+	Maximum resident set size (kbytes): 53364
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 267
-	Minor (reclaiming a frame) page faults: 15712
-	Voluntary context switches: 1471
-	Involuntary context switches: 33
+	Minor (reclaiming a frame) page faults: 16784
+	Voluntary context switches: 1343
+	Involuntary context switches: 31
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 8

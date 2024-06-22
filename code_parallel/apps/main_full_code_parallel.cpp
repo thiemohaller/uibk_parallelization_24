@@ -13,6 +13,24 @@
 
 double Sedov_volume;
 
+// Currently results in race condition -> TODO find a way to fix it
+void printDebug(const grid_3D& global_grid, const grid_3D& local_grid, const int rank) {
+	std::cout << "---------------------- DEBUG GRID RANK " << rank << "----------------------\n";
+	std::cout << "Global Grid Information:\n";
+	std::cout << "Number of Cells: " << global_grid.get_num_cells(0) << " " << global_grid.get_num_cells(1) << " " << global_grid.get_num_cells(2) << "\n";
+	std::cout << "Lower Bound: " << global_grid.x_grid.get_left(0) << " " << global_grid.y_grid.get_left(0) << " " << global_grid.z_grid.get_left(0) << "\n";
+	std::cout << "Upper Bound: " << global_grid.x_grid.get_left(global_grid.get_num_cells(0)) << " " << global_grid.y_grid.get_left(global_grid.get_num_cells(1)) << " " << global_grid.z_grid.get_left(global_grid.get_num_cells(2)) << "\n";
+	std::cout << "Cell Size: " << global_grid.x_grid.get_dx() << " " << global_grid.y_grid.get_dx() << " " << global_grid.z_grid.get_dx() << "\n";
+
+	std::cout << "----\n";
+	std::cout << "Local Grid Information:\n";
+	std::cout << "Number of Cells: " << local_grid.get_num_cells(0) << " " << local_grid.get_num_cells(1) << " " << local_grid.get_num_cells(2) << "\n";
+	std::cout << "Lower Bound: " << local_grid.x_grid.get_left(0) << " " << local_grid.y_grid.get_left(0) << " " << local_grid.z_grid.get_left(0) << "\n";
+	std::cout << "Upper Bound: " << local_grid.x_grid.get_left(local_grid.get_num_cells(0)) << " " << local_grid.y_grid.get_left(local_grid.get_num_cells(1)) << " " << local_grid.z_grid.get_left(local_grid.get_num_cells(2)) << "\n";
+	std::cout << "Cell Size: " << local_grid.x_grid.get_dx() << " " << local_grid.y_grid.get_dx() << " " << local_grid.z_grid.get_dx() << "\n";
+	std::cout << "---------------------- end of DEBUG GRID RANK " << rank << "----------------------\n";
+}
+
 void init_Sedov(fluid_cell &fluid, double x_position, double y_position, double z_position) {
 	double radius = sqrt(sim_util::square(x_position) + sim_util::square(y_position) + sim_util::square(z_position));
 	double radius_init = 0.05;
@@ -47,9 +65,9 @@ int main(int argc, char *argv[]) {
 	MPI_Init(&argc, &argv);
 	MPI_Comm_size(MPI_COMM_WORLD, &ntasks);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-
-	std::cout << " I am using rank " << rank << " of " << ntasks << "\n";
-
+	if(ntasks == 0) {
+		std::cout << "World size: " << ntasks << std::endl;
+	}
 	
 	std::vector<double> bound_low(3), bound_up(3);
 	bound_low[0] = -0.5;
@@ -77,11 +95,11 @@ int main(int argc, char *argv[]) {
 	grid_3D global_grid(bound_low, bound_up, num_cells, 2);
 	// Now, create a local grid
 	grid_3D local_grid = parallel_stuff.make_local_grid(global_grid);
+	printDebug(global_grid, local_grid, rank);
 
-	std::cout << " Anfang: " << local_grid.x_grid.get_center(0) << " " << local_grid.x_grid.get_left(0) << "\n";
-	int num = local_grid.get_num_cells(0);
-	std::cout << " Ende: " << local_grid.x_grid.get_center(num-1) << " " << local_grid.x_grid.get_left(num) << "\n";
-
+	// std::cout << " Anfang: " << local_grid.x_grid.get_center(0) << " " << local_grid.x_grid.get_left(0) << "\n";
+	// int num = local_grid.get_num_cells(0);
+	// std::cout << " Ende: " << local_grid.x_grid.get_center(num-1) << " " << local_grid.x_grid.get_left(num) << "\n";
 
 	// Get number of Sedov cells
 	Sedov_volume = 0.0;

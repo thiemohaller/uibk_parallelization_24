@@ -76,8 +76,8 @@ void grid_1D::build_lin_axis(double min, double max, size_t num_cells, int num_g
 	int grid_beg = -num_ghostcells;
 	int grid_end = num_cells + num_ghostcells;
 
-	std::cout << " Making linear grid from ";
-	std::cout << min << " " << max << " with " << num_cells << " cells\n";
+	// std::cout << " Making linear grid from ";
+	// std::cout << min << " " << max << " with " << num_cells << " cells\n";
 	grid_left.resize(&grid_beg, &grid_end);
 
 	const auto dx = (max - min) / static_cast<double>(num_cells);
