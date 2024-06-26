@@ -187,7 +187,6 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			// first get data from neighbouring rank on the left and send data to rank on the right.
 			// where necessary, do parallel boundaries
 			// Prepare buffer -> size 2 x Ny x Nz
-			std::cout << "Rank " << rank << " is working on lower x boundary\n";
 			int size_buff = 2 * Ny * Nz;
 			std::vector<double> buff_send_x(size_buff);
 			std::vector<double> buff_recv_x(size_buff);
@@ -211,7 +210,6 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 				for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
 					for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
 						buff_send_x[i_buff] = current_fluid.fluid_data[i_field](Nx - 2 + ix, iy, iz);
-						// buff_Send_x(ix, iy, iz) = current_fluid.fluid_data[i_field](Nx - 2 + ix, iy, iz);
 						i_buff++;
 					}
 				}
@@ -223,8 +221,6 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			          << " and receiving buffer size: " << size_buff << ", Source rank: " << src_rank << ", Receive tag: " << tag_recv << std::endl;
 			MPI_Sendrecv(&buff_send_x[0], size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_x[0], size_buff, MPI_DOUBLE, src_rank, tag_recv,
 			             parallel_handler.comm3D, &status);
-			// MPI_Sendrecv(&buff_send_x[0], size_buff, MPI_DOUBLE, dest_rank, tag_send,
-			//     &buff_recv_x[0], size_buff, MPI_DOUBLE, src_rank, tag_recv, parallel_handler.comm3D, &status);
 
 			// Finally, assign data - either directly or from receive buffer
 			if (parallel_handler.get_left() == MPI_PROC_NULL) {
@@ -369,7 +365,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			// TBD by students
 
 			// ---------------- by me
-			std::cout << "Rank " << rank << " is working on lower z boundary\n";
+			std::cout << "Rank " << rank << " is working on lower z boundary ---------------------------------------------------------------------- \n";
 			size_buff = 2 * Nx * Ny;
 			std::vector<double> buff_send_z(size_buff);
 			std::vector<double> buff_recv_z(size_buff);

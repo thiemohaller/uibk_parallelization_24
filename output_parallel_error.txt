@@ -1,103 +1,23 @@
-[n001:1495763:0:1495763] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffff01393a8)
-[n001:1495757:0:1495757] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffc7c002828)
-[n001:1495759:0:1495759] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffcefcd3898)
-[n001:1495761:0:1495761] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ffce8c0d0a8)
-==== backtrace (tid:1495757) ====
- 0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
- 1 0x0000000000012cf0 __funlockfile()  :0
- 2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
- 3 0x00000000000248a3 ucp_dt_pack()  ???:0
- 4 0x000000000002e6b2 ucp_tag_offload_unexp_eager()  ???:0
- 5 0x00000000000148e9 uct_mm_ep_am_bcopy()  ???:0
- 6 0x000000000002e9c9 ucp_tag_offload_unexp_eager()  ???:0
- 7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
- 8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
- 9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040ddb6 finite_volume_solver::run()  ???:0
-12 0x00000000004040dd main()  ???:0
-13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040455e _start()  ???:0
-=================================
-==== backtrace (tid:1495761) ====
- 0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
- 1 0x0000000000012cf0 __funlockfile()  :0
- 2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
- 3 0x00000000000248a3 ucp_dt_pack()  ???:0
- 4 0x000000000002e6b2 ucp_tag_offload_unexp_eager()  ???:0
- 5 0x00000000000148e9 uct_mm_ep_am_bcopy()  ???:0
- 6 0x000000000002e9c9 ucp_tag_offload_unexp_eager()  ???:0
- 7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
- 8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
- 9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040ddb6 finite_volume_solver::run()  ???:0
-12 0x00000000004040dd main()  ???:0
-13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040455e _start()  ???:0
-==== backtrace (tid:1495759) ====
- 0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
- 1 0x0000000000012cf0 __funlockfile()  :0
- 2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
- 3 0x00000000000248a3 ucp_dt_pack()  ???:0
-=================================
- 4 0x000000000002e6b2 ucp_tag_offload_unexp_eager()  ???:0
- 5 0x00000000000148e9 uct_mm_ep_am_bcopy()  ???:0
- 6 0x000000000002e9c9 ucp_tag_offload_unexp_eager()  ???:0
- 7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
- 8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
- 9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040ddb6 finite_volume_solver::run()  ???:0
-12 0x00000000004040dd main()  ???:0
-13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040455e _start()  ???:0
-=================================
-==== backtrace (tid:1495763) ====
- 0 0x00000000000534e9 ucs_debug_print_backtrace()  ???:0
- 1 0x0000000000012cf0 __funlockfile()  :0
- 2 0x0000000000037005 __memcpy_sse2_unaligned_erms()  :0
- 3 0x00000000000248a3 ucp_dt_pack()  ???:0
- 4 0x000000000002e6b2 ucp_tag_offload_unexp_eager()  ???:0
- 5 0x00000000000148e9 uct_mm_ep_am_bcopy()  ???:0
- 6 0x000000000002e9c9 ucp_tag_offload_unexp_eager()  ???:0
- 7 0x000000000003aa0e ucp_tag_send_nbr()  ???:0
- 8 0x00000000001a68b1 mca_pml_ucx_send()  ???:0
- 9 0x00000000000b2d1d PMPI_Sendrecv()  ???:0
-10 0x000000000040aa4a finite_volume_solver::apply_boundary_conditions()  ???:0
-11 0x000000000040ddb6 finite_volume_solver::run()  ???:0
-12 0x00000000004040dd main()  ???:0
-13 0x000000000003ad85 __libc_start_main()  ???:0
-14 0x000000000040455e _start()  ???:0
-=================================
---------------------------------------------------------------------------
-Primary job  terminated normally, but 1 process returned
-a non-zero exit code. Per user-direction, the job has been aborted.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-mpiexec noticed that process rank 1 with PID 1495757 on node n001 exited on signal 11 (Segmentation fault).
---------------------------------------------------------------------------
-Command exited with non-zero status 139
-	Command being timed: "mpiexec -n 8 ./code_parallel/build/apps/run_full_code.parallel"
-	User time (seconds): 0.21
-	System time (seconds): 0.18
-	Percent of CPU this job got: 76%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.51
+	Command being timed: "mpiexec -n 2 ./code_parallel/build/apps/run_full_code.parallel"
+	User time (seconds): 685.93
+	System time (seconds): 0.96
+	Percent of CPU this job got: 199%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:44.35
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 53504
+	Maximum resident set size (kbytes): 220588
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 400
-	Minor (reclaiming a frame) page faults: 22545
-	Voluntary context switches: 1617
-	Involuntary context switches: 32
+	Major (requiring I/O) page faults: 312
+	Minor (reclaiming a frame) page faults: 35419
+	Voluntary context switches: 18477
+	Involuntary context switches: 2727
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 8
+	File system outputs: 368
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
-	Exit status: 139
+	Exit status: 0
