@@ -9,9 +9,11 @@
 # Maximum number of tasks (=processes) to start in total
 #SBATCH --ntasks=8
 # Maximum number of tasks (=processes) to start per node
-# SBATCH --ntasks-per-node=8
+# #SBATCH --ntasks-per-node=8
 # Enforce exclusive node allocation, do not share with other jobs
-#SBATCH --exclusive
+# #SBATCH --exclusive
+
+#SBATCH --error=output_parallel_error.txt
 
 module load openmpi/3.1.6-gcc-12.2.0-d2gmn55
 

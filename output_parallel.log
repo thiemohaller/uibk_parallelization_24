@@ -1,51 +1,299 @@
-xterm: Xt error: Can't open display: 
-xterm: DISPLAY is not set
-xterm: Xt error: Can't open display: 
-xterm: DISPLAY is not set
-xterm: Xt error: Can't open display: 
-xterm: DISPLAY is not set
-xterm: Xt error: Can't open display: 
-xterm: DISPLAY is not set
-xterm: Xt error: Can't open display: 
-xterm: DISPLAY is not set
-xterm: Xt error: Can't open display: 
-xterm: DISPLAY is not set
-xterm: Xt error: Can't open display: 
-xterm: DISPLAY is not set
-xterm: Xt error: Can't open display: 
-xterm: DISPLAY is not set
---------------------------------------------------------------------------
-Primary job  terminated normally, but 1 process returned
-a non-zero exit code. Per user-direction, the job has been aborted.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-mpiexec detected that one or more processes exited with non-zero status, thus causing
-the job to be terminated. The first process to do so was:
-
-  Process name: [[42609,1],0]
-  Exit code:    1
---------------------------------------------------------------------------
-Command exited with non-zero status 1
-	Command being timed: "mpiexec -n 8 xterm -e gdb ./code_parallel/build/apps/run_full_code.parallel"
-	User time (seconds): 0.05
-	System time (seconds): 0.08
-	Percent of CPU this job got: 49%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.28
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 18504
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 119
-	Minor (reclaiming a frame) page faults: 5156
-	Voluntary context switches: 565
-	Involuntary context switches: 32
-	Swaps: 0
-	File system inputs: 4144
-	File system outputs: 8
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 1
+ ning in parallel with 8 tasks 
+ Created new tasks for rank 1
+ MPI coordinates for rank 1 -> 0 0 1
+---------------------- DEBUG GRID RANK 1----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: -0.5 -0.5 0
+Upper Bound: 0 0 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 1----------------------
+ Created new tasks for rank 2
+ MPI coordinates for rank 2 -> 0 1 0
+---------------------- DEBUG GRID RANK 2----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: -0.5 0 -0.5
+Upper Bound: 0 0.5 0
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 2----------------------
+ Created new tasks for rank 3
+ MPI coordinates for rank 3 -> 0 1 1
+---------------------- DEBUG GRID RANK 3----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: -0.5 0 0
+Upper Bound: 0 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 3----------------------
+ Created new tasks for rank 4
+ MPI coordinates for rank 4 -> 1 0 0
+---------------------- DEBUG GRID RANK 4----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: 0 -0.5 -0.5
+Upper Bound: 0.5 0 0
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 4----------------------
+ Created new tasks for rank 5
+ MPI coordinates for rank 5 -> 1 0 1
+---------------------- DEBUG GRID RANK 5----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: 0 -0.5 0
+Upper Bound: 0.5 0 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 5----------------------
+ Created new tasks for rank 6
+ MPI coordinates for rank 6 -> 1 1 0
+---------------------- DEBUG GRID RANK 6----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: 0 0 -0.5
+Upper Bound: 0.5 0.5 0
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 6----------------------
+ Created new tasks for rank 7
+ MPI coordinates for rank 7 -> 1 1 1
+---------------------- DEBUG GRID RANK 7----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: 0 0 0
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 7----------------------
+ Created new tasks for rank 0
+ MPI coordinates for rank 0 -> 0 0 0
+---------------------- DEBUG GRID RANK 0----------------------
+Global Grid Information:
+Number of Cells: 128 128 128
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0.5 0.5 0.5
+Cell Size: 0.0078125 0.0078125 0.0078125
+----
+Local Grid Information:
+Number of Cells: 64 64 64
+Lower Bound: -0.5 -0.5 -0.5
+Upper Bound: 0 0 0
+Cell Size: 0.0078125 0.0078125 0.0078125
+---------------------- end of DEBUG GRID RANK 0----------------------
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ resizing field 0:
+ Volume of Sedov region: 0.00416946 in 8744 cells
+ resizing field 0:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 1:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 2:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 3:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 4:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ resizing field 5:
+ -> 314432
+ -> 314432
+ -> 314432
+ -> 314432
+ -> 314432
+ -> 314432
+ -> 314432
+ -> 314432
+Rank 6 is applying boundary conditions in parallel
+Rank 6 is working on lower x boundary
+Rank 6 is sending buffer size: 8192, Destination rank: -2, Send tag: 0 and receiving buffer size: 8192, Source rank: 2, Receive tag: 0
+Rank 7 is applying boundary conditions in parallel
+Rank 7 is working on lower x boundary
+Rank 4 is applying boundary conditions in parallel
+Rank 4 is working on lower x boundary
+Rank 7 is sending buffer size: 8192, Destination rank: -2, Send tag: 0 and receiving buffer size: 8192, Source rank: 3, Receive tag: 0
+Rank 4 is sending buffer size: 8192, Destination rank: -2, Send tag: 0 and receiving buffer size: 8192, Source rank: 0, Receive tag: 0
+Rank 5 is applying boundary conditions in parallel
+Rank 5 is working on lower x boundary
+Rank 0 is applying boundary conditions in parallel
+Rank 0 is working on lower x boundary
+Rank 5 is sending buffer size: 8192, Destination rank: -2, Send tag: 0 and receiving buffer size: 8192, Source rank: 1, Receive tag: 0
+Rank 3 is applying boundary conditions in parallel
+Rank 3 is working on lower x boundary
+Rank 0 is sending buffer size: 8192, Destination rank: 4, Send tag: 0 and receiving buffer size: 8192, Source rank: -2, Receive tag: 0
+Rank 1 is applying boundary conditions in parallel
+Rank 1 is working on lower x boundary
+Rank 3 is sending buffer size: 8192, Destination rank: 7, Send tag: 0 and receiving buffer size: 8192, Source rank: -2, Receive tag: 0
+Rank 1 is sending buffer size: 8192, Destination rank: 5, Send tag: 0 and receiving buffer size: 8192, Source rank: -2, Receive tag: 0
+Rank 4 is sending buffer size: 8192, Destination rank: 0, Send tag: 1 and receiving buffer size: 8192, Source rank: -2, Receive tag: 1
+Rank 7 is sending buffer size: 8192, Destination rank: 3, Send tag: 1 and receiving buffer size: 8192, Source rank: -2, Receive tag: 1
+Rank 0 is sending buffer size: 8192, Destination rank: -2, Send tag: 1 and receiving buffer size: 8192, Source rank: 4, Receive tag: 1
+Rank 3 is sending buffer size: 8192, Destination rank: -2, Send tag: 1 and receiving buffer size: 8192, Source rank: 7, Receive tag: 1
+Rank 5 is sending buffer size: 8192, Destination rank: 1, Send tag: 1 and receiving buffer size: 8192, Source rank: -2, Receive tag: 1
+Rank 1 is sending buffer size: 8192, Destination rank: -2, Send tag: 1 and receiving buffer size: 8192, Source rank: 5, Receive tag: 1
+Rank 4 is sending buffer size: 8192, Destination rank: -2, Send tag: 2 and receiving buffer size: 8192, Source rank: 6, Receive tag: 2
+Rank 0 is sending buffer size: 8192, Destination rank: -2, Send tag: 2 and receiving buffer size: 8192, Source rank: 2, Receive tag: 2
+Rank 7 is sending buffer size: 8192, Destination rank: 5, Send tag: 2 and receiving buffer size: 8192, Source rank: -2, Receive tag: 2
+Rank 3 is sending buffer size: 8192, Destination rank: 1, Send tag: 2 and receiving buffer size: 8192, Source rank: -2, Receive tag: 2
+Rank 1 is sending buffer size: 8192, Destination rank: -2, Send tag: 2 and receiving buffer size: 8192, Source rank: 3, Receive tag: 2
+Rank 5 is sending buffer size: 8192, Destination rank: -2, Send tag: 2 and receiving buffer size: 8192, Source rank: 7, Receive tag: 2
+Rank 3 is sending buffer size: 8192, Destination rank: -2, Send tag: 3 and receiving buffer size: 8192, Source rank: 1, Receive tag: 3
+Rank 2 is applying boundary conditions in parallel
+Rank 2 is working on lower x boundary
+Rank 7 is sending buffer size: 8192, Destination rank: -2, Send tag: 3 and receiving buffer size: 8192, Source rank: 5, Receive tag: 3
+Rank 5 is sending buffer size: 8192, Destination rank: 7, Send tag: 3 and receiving buffer size: 8192, Source rank: -2, Receive tag: 3
+Rank 1 is sending buffer size: 8192, Destination rank: 3, Send tag: 3 and receiving buffer size: 8192, Source rank: -2, Receive tag: 3
+Rank 7 is working on lower z boundary
+Rank 2 is sending buffer size: 8192, Destination rank: 6, Send tag: 0 and receiving buffer size: 8192, Source rank: -2, Receive tag: 0
+Rank 3 is working on lower z boundary
+Rank 5 is working on lower z boundary
+Rank 1 is working on lower z boundary
+Rank 6 is sending buffer size: 8192, Destination rank: 2, Send tag: 1 and receiving buffer size: 8192, Source rank: -2, Receive tag: 1
+Rank 2 is sending buffer size: 8192, Destination rank: -2, Send tag: 1 and receiving buffer size: 8192, Source rank: 6, Receive tag: 1
+Rank 3 is sending buffer size: 8192, Destination rank: -2, Send tag: 4 and receiving buffer size: 8192, Source rank: 2, Receive tag: 4
+Rank 7 is sending buffer size: 8192, Destination rank: -2, Send tag: 4 and receiving buffer size: 8192, Source rank: 6, Receive tag: 4
+Rank 5 is sending buffer size: 8192, Destination rank: -2, Send tag: 4 and receiving buffer size: 8192, Source rank: 4, Receive tag: 4
+Rank 1 is sending buffer size: 8192, Destination rank: -2, Send tag: 4 and receiving buffer size: 8192, Source rank: 0, Receive tag: 4
+Rank 6 is sending buffer size: 8192, Destination rank: 4, Send tag: 2 and receiving buffer size: 8192, Source rank: -2, Receive tag: 2
+Rank 2 is sending buffer size: 8192, Destination rank: 0, Send tag: 2 and receiving buffer size: 8192, Source rank: -2, Receive tag: 2
+Rank 4 is sending buffer size: 8192, Destination rank: 6, Send tag: 3 and receiving buffer size: 8192, Source rank: -2, Receive tag: 3
+Rank 0 is sending buffer size: 8192, Destination rank: 2, Send tag: 3 and receiving buffer size: 8192, Source rank: -2, Receive tag: 3
+Rank 6 is sending buffer size: 8192, Destination rank: -2, Send tag: 3 and receiving buffer size: 8192, Source rank: 4, Receive tag: 3
+Rank 2 is sending buffer size: 8192, Destination rank: -2, Send tag: 3 and receiving buffer size: 8192, Source rank: 0, Receive tag: 3
+Rank 6 is working on lower z boundary
+Rank 4 is working on lower z boundary
+Rank 0 is working on lower z boundary
+Rank 2 is working on lower z boundary
+Rank 0 is sending buffer size: 8192, Destination rank: 1, Send tag: 4 and receiving buffer size: 8192, Source rank: -2, Receive tag: 4
+Rank 6 is sending buffer size: 8192, Destination rank: 7, Send tag: 4 and receiving buffer size: 8192, Source rank: -2, Receive tag: 4
+Rank 2 is sending buffer size: 8192, Destination rank: 3, Send tag: 4 and receiving buffer size: 8192, Source rank: -2, Receive tag: 4
+Rank 4 is sending buffer size: 8192, Destination rank: 5, Send tag: 4 and receiving buffer size: 8192, Source rank: -2, Receive tag: 4
+Rank 5 is working on upper z boundary
+Rank 1 is working on upper z boundary
+Rank 0 is working on upper z boundary
+Rank 4 is working on upper z boundary
+Rank 7 is working on upper z boundary
+Rank 0 is sending buffer size: 8192, Destination rank: -2, Send tag: 5 and receiving buffer size: 8192, Source rank: 1, Receive tag: 5
+Rank 6 is working on upper z boundary
+Rank 2 is working on upper z boundary
+Rank 3 is working on upper z boundary
+Rank 1 is sending buffer size: 8192, Destination rank: 0, Send tag: 5 and receiving buffer size: 8192, Source rank: -2, Receive tag: 5
+Rank 4 is sending buffer size: 8192, Destination rank: -2, Send tag: 5 and receiving buffer size: 8192, Source rank: 5, Receive tag: 5
+Rank 7 is sending buffer size: 8192, Destination rank: 6, Send tag: 5 and receiving buffer size: 8192, Source rank: -2, Receive tag: 5
+Rank 5 is sending buffer size: 8192, Destination rank: 4, Send tag: 5 and receiving buffer size: 8192, Source rank: -2, Receive tag: 5
+Rank 3 is sending buffer size: 8192, Destination rank: 2, Send tag: 5 and receiving buffer size: 8192, Source rank: -2, Receive tag: 5
+Rank 6 is sending buffer size: 8192, Destination rank: -2, Send tag: 5 and receiving buffer size: 8192, Source rank: 7, Receive tag: 5
+Rank 2 is sending buffer size: 8192, Destination rank: -2, Send tag: 5 and receiving buffer size: 8192, Source rank: 3, Receive tag: 5
+3 total processes killed (some possibly by mpiexec during cleanup)

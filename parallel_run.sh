@@ -18,7 +18,8 @@ while [[ "$1" != "" ]]; do
             BUILD=true
             ;;
         -d|--debug)
-            DEBUG=true
+            # DEBUG=true
+            echo 'The debug option is currently not supported'
             ;;
         *)
             echo "Invalid option: $1"
@@ -43,5 +44,5 @@ else
     sbatch job_parallel.sh
 fi
 
-echo "👀 Use `watch -n 1 squeue --me` to watch your submitted jobs"
-echo "So long, and thanks for all the fish! 🐬"
+echo "👀 Use \`watch -n 1 squeue --me\` to watch your submitted jobs"
+echo "🐬 So long, and thanks for all the fish! 🐬"
