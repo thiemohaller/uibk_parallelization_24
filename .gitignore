@@ -55,3 +55,4 @@ assignments/02/mandelbrot_mpi.png
 *.h5
 output_parallel_error.txt
 output_parallel.log
+output.log
