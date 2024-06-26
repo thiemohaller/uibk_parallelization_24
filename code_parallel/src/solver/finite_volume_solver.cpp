@@ -445,7 +445,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 				assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, Nz, spatial_grid);
 			}
 
-			std::cout << "Rank " << rank << " has finished applying boundary conditions\n";
+			// std::cout << "Rank " << rank << " has finished applying boundary conditions\n";
 		}
 	}
 }
