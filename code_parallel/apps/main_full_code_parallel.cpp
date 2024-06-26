@@ -108,11 +108,7 @@ int main(int argc, char *argv[]) {
 	grid_3D global_grid(bound_low, bound_up, num_cells, 2);
 	// Now, create a local grid
 	grid_3D local_grid = parallel_stuff.make_local_grid(global_grid);
-	printDebug(global_grid, local_grid, rank);
-
-	// std::cout << " Anfang: " << local_grid.x_grid.get_center(0) << " " << local_grid.x_grid.get_left(0) << "\n";
-	// int num = local_grid.get_num_cells(0);
-	// std::cout << " Ende: " << local_grid.x_grid.get_center(num-1) << " " << local_grid.x_grid.get_left(num) << "\n";
+	// printDebug(global_grid, local_grid, rank);
 
 	// Get number of Sedov cells
 	Sedov_volume = 0.0;
@@ -149,8 +145,7 @@ int main(int argc, char *argv[]) {
 	// MPI_Finalize();
 	// return 0;
 
-
-	
+	std::cout << "Rank: " << parallel_stuff.get_rank() << " is now creating the fluid\n";
 
 	// Now, I will create a HD fluid
 	fluid hd_fluid(parallelisation::FluidType::adiabatic);
@@ -166,6 +161,8 @@ int main(int argc, char *argv[]) {
 	double dt_out = 0.005;
 
 	solver_parallel.run(local_grid, hd_fluid, t_final, dt_out);
+	// std::cout << "Rank: " << parallel_stuff.get_rank() << " says So long, and thanks for all the fish! 🐬\n";
+	std::cout << "Rank: " << parallel_stuff.get_rank() << " says So long, and thanks for all the fish!\n";
 
 	MPI_Finalize();
 	return 0;

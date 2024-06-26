@@ -51,3 +51,8 @@ code_students/bin/tests
 code_students/build/
 code_students/build_debug
 assignments/02/mandelbrot_mpi.png
+
+*.h5
+./output_parallel_error.txt
+./output_parallel.log
+output_step0.h5
