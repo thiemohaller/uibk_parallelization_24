@@ -15,5 +15,5 @@
 
 module load openmpi/3.1.6-gcc-12.2.0-d2gmn55
 
-#### NOT WORKING
-/usr/bin/time -v mpiexec -n $SLURM_NTASKS xterm -e gdb ./code_parallel/build/apps/run_full_code.parallel
+# /usr/bin/time -v mpiexec -n $SLURM_NTASKS ./code_parallel/build/apps/run_full_code.parallel
+mpiexec -n 1 valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes ./code_parallel/build/apps/run_full_code.parallel :  -n 7 ./code_parallel/build/apps/run_full_code.parallel 2> output_parallel_valgrind.txt

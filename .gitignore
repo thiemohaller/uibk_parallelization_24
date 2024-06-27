@@ -56,3 +56,4 @@ assignments/02/mandelbrot_mpi.png
 output_parallel_error.txt
 output_parallel.log
 output.log
+output_parallel_valgrind.txt

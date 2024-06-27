@@ -18,8 +18,7 @@ while [[ "$1" != "" ]]; do
             BUILD=true
             ;;
         -d|--debug)
-            # DEBUG=true
-            echo 'The debug option is currently not supported'
+            DEBUG=true
             ;;
         *)
             echo "Invalid option: $1"
@@ -37,7 +36,7 @@ fi
 
 # submit debug version using gdb
 if [ "$DEBUG" = true ]; then
-    echo "🚀 Submitting debug job via slurm, using gdb, excellent choice"
+    echo "🤖 Submitting debug job via slurm, using valgrind to trace leaks, excellent choice"
     sbatch job_parallel_debug.sh
 else
     echo "🚀 Submitting regular job via slurm"
