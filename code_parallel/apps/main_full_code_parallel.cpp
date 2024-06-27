@@ -92,17 +92,17 @@ int main(int argc, char *argv[]) {
 	// num_cells[0] = 128;
 	// num_cells[1] = 128;
 	// num_cells[2] = 128;
-	num_cells[0] = 16;
-	num_cells[1] = 16;
-	num_cells[2] = 16;
+	num_cells[0] = 32;
+	num_cells[1] = 32;
+	num_cells[2] = 32;
 
 
 	std::vector<int> tasks(3);
 	// tasks[0] = 2;
 	// tasks[1] = 2;
 	// tasks[2] = 2;
-	tasks[0] = 2;
-	tasks[1] = 2;
+	tasks[0] = 1;
+	tasks[1] = 1;
 	tasks[2] = 2;
 
 	// Start the MPI handler
@@ -154,6 +154,7 @@ int main(int argc, char *argv[]) {
 	std::function<void(fluid_cell &, double, double, double)> function_init = init_Sedov;
 	// std::function<void(fluid_cell &, double, double, double)> function_init = init_linear;
 
+	std::cout << "Size of Global Grid: " << global_grid.get_num_cells(0) << " x " << global_grid.get_num_cells(1) << " x " << global_grid.get_num_cells(2) << std::endl;
 	finite_volume_solver solver_parallel(hd_fluid, parallel_stuff, global_grid);
 	solver_parallel.set_init_function(function_init);
 

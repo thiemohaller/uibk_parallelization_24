@@ -44,7 +44,7 @@ mpi_handler::mpi_handler(const std::vector<int> &_num_tasks) {
 	// Syntax: comm3D, shift direction, displacement, source, destination
 	MPI_Cart_shift(comm3D, 0, 1, &left , &right);
 	// DONE y-direction TBD by students
-	MPI_Cart_shift(comm3D, 1, 1, &back, &front);
+	MPI_Cart_shift(comm3D, 1, 1, &front, &back);
 	MPI_Cart_shift(comm3D, 2, 1, &bottom, &top);
 
 	// Get coordinates of local rank

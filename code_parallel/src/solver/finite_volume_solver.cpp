@@ -421,8 +421,10 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			MPI_Sendrecv(&buff_send_z[0], size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_z[0], size_buff, MPI_DOUBLE, src_rank, tag_recv,
 			             parallel_handler.comm3D, &status);
 
+			// std::cout << "Rank " << rank << " is done with send/receicve for lower z" << std::endl;
 			// Finally, assign data - either directly or from receive buffer
 			if (parallel_handler.get_bottom() == MPI_PROC_NULL) {
+				// std::cout << "Rank " << rank << " is working on lower z boundary in edge case\n";
 				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
 					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
 						for (int iz = -1; iz >= -2; --iz) {
@@ -431,6 +433,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
+				// std::cout << "Rank " << rank << " is working on lower z boundary in parallel case\n";
 				// assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, -2, spatial_grid);
 				i_buff = 0;
 				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
@@ -442,6 +445,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			}
+			// std::cout << "Rank " << rank << " has finished working on lower z boundary\n";
 
 			// upper z boundary
 			// std::cout << "Rank " << rank << " is working on upper z boundary\n";
@@ -467,30 +471,45 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			//           << " and receiving buffer size: " << size_buff << ", Source rank: " << src_rank << ", Receive tag: " << tag_recv << std::endl;
 			MPI_Sendrecv(&buff_send_z, size_buff, MPI_DOUBLE, dest_rank, tag_send, &buff_recv_z, size_buff, MPI_DOUBLE, src_rank, tag_recv, parallel_handler.comm3D,
 			             &status);
+			// std::cout << "Rank " << rank << " has finished send/receive for upper z\n";
 
+			std::cout << "Lets a go" << std::endl;
 			// Finally, assign data - either directly or from receive buffer
+			int handler = parallel_handler.get_top();
+			std::cout << "Rank " << rank << " has handler " << handler << std::endl;
 			if (parallel_handler.get_top() == MPI_PROC_NULL) {
+				std::cout << "Rank " << rank << " is working on upper z boundary in edge case with spatial grid " << spatial_grid.get_num_cells(2) << "\n";
 				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
 					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
 						for (int iz = spatial_grid.get_num_cells(2); iz < spatial_grid.get_num_cells(2) + 2; ++iz) {
+							int index = iz - 1;
+							std::cout << "Index: " << index << " with ix " << ix << " iy " << iy << " iz " << iz << " Nz " << Nz << "\n";
+							std::cout << "Rank " << rank << " is assigning data with " << i_buff << " to " << current_fluid.fluid_data[i_field](ix, iy, Nz + iz) << "\n";
 							current_fluid.fluid_data[i_field](ix, iy, iz) = current_fluid.fluid_data[i_field](ix, iy, iz - 1);
 						}
 					}
 				}
 			} else {
 				// assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, Nz, spatial_grid);
+				std::cout << "Rank " << rank << " is working on upper z boundary in parallel case\n";
 				i_buff = 0;
+				int spatial_grid_size_x = spatial_grid.get_num_cells(0);
+				int spatial_grid_size_y = spatial_grid.get_num_cells(1);
+				std::cout << "Rank " << rank << " is starting to loop with ibuff " << i_buff << " and size of x " << spatial_grid_size_x << " and size of y "
+				          << spatial_grid_size_y << "\n";
 				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
 					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
 						for (int iz = 0; iz < 2; iz++) {
+							int index = Nz + iz;
+							std::cout << "Index: " << index << " with ix " << ix << " iy " << iy << " iz " << iz << " Nz " << Nz << "\n";
+							std::cout << "Rank " << rank << " is assigning data with " << i_buff << " to " << current_fluid.fluid_data[i_field](ix, iy, Nz + iz) << "\n";
 							current_fluid.fluid_data[i_field](ix, iy, Nz + iz) = buff_recv_z[i_buff];
 							i_buff++;
 						}
 					}
 				}
 			}
-
-			// std::cout << "Rank " << rank << " has finished applying boundary conditions\n";
+			std::cout << "Rank " << rank << " has finished applying boundary conditions\n";
 		}
 	}
 }
