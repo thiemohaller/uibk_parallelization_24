@@ -6,7 +6,7 @@ from matplotlib.colors import LogNorm
 import numpy as np
 import os
 
-path_data = "/scratch/cb761148/uibk_parallelization_24/code_students/build"
+path_data = "/scratch/cb761148/uibk_parallelization_24"
 
 class plane_type(Enum) :
     xy = 1

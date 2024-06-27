@@ -26,7 +26,7 @@ mpi_handler::mpi_handler(const std::vector<int> &_num_tasks) {
 	}
 
 	if(rank==0) {
-		std::cout << " ning in parallel with " << ntasks << " tasks \n";
+		std::cout << " Running in parallel with " << ntasks << " tasks \n";
 	}
 
 	// Create a Cartesian MPI communicator

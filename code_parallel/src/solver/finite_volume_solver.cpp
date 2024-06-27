@@ -31,14 +31,12 @@ finite_volume_solver::finite_volume_solver(fluid &current_fluid)
   parallel_handler(parallel_stuff), _global_grid(global_grid)
 #endif
 {
-
 	CFL_max = 0.4;
 
 	rank = 0;
 #ifdef PARALLEL_VERSION
 	rank = parallel_handler.get_rank();
 #endif
-
 	init_set = false;
 	write_next_step = false;
 	verbosity = 0;
@@ -94,8 +92,10 @@ int finite_volume_solver::run(grid_3D &spatial_grid, fluid &current_fluid, doubl
 
 	// Store initial time step
 #ifdef PARALLEL_VERSION
+	std::cout << "Rank " << rank << " is storing initial time step in parallel\n";
 	store_timestep_parallel(spatial_grid, current_fluid);
 #else
+	std::cout << "Rank " << rank << " is storing initial time step in serial\n";
 	store_timestep(spatial_grid, current_fluid);
 #endif
 
@@ -232,7 +232,16 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				assign_data_from_buffer(buff_recv_x, current_fluid, i_field, -2, 0, 0, spatial_grid);
+				// assign_data_from_buffer(buff_recv_x, current_fluid, i_field, -2, 0, 0, spatial_grid);
+				i_buff = 0;
+				for (int ix = 0; ix < 2; ix++) {
+					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
+						for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
+							current_fluid.fluid_data[i_field](ix, iy, iz) = buff_recv_x[i_buff];
+							i_buff++;
+						}
+					}
+				}
 			}
 
 			// Upper x boundary
@@ -271,7 +280,16 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				assign_data_from_buffer(buff_recv_x, current_fluid, i_field, Nx, 0, 0, spatial_grid);
+				// assign_data_from_buffer(buff_recv_x, current_fluid, i_field, Nx, 0, 0, spatial_grid);
+				i_buff = 0;
+				for (int ix = 0; ix < 2; ix++) {
+					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
+						for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
+							current_fluid.fluid_data[i_field](Nx + ix, iy, iz) = buff_recv_x[i_buff];
+							i_buff++;
+						}
+					}
+				}
 			}
 
 			// Lower y boundary
@@ -356,7 +374,16 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				assign_data_from_buffer(buff_recv_y, current_fluid, i_field, 0, Ny, 0, spatial_grid);
+				// assign_data_from_buffer(buff_recv_y, current_fluid, i_field, 0, Ny, 0, spatial_grid);
+				i_buff = 0;
+				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
+					for (int iy = 0; iy < 2; iy++) {
+						for (int iz = 0; iz < spatial_grid.get_num_cells(2); ++iz) {
+							current_fluid.fluid_data[i_field](ix, Ny + iy, iz) = buff_recv_y[i_buff];
+							i_buff++;
+						}
+					}
+				}
 			}
 
 			// Lower z boundary
@@ -395,7 +422,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			             parallel_handler.comm3D, &status);
 
 			// Finally, assign data - either directly or from receive buffer
-			if (parallel_handler.get_front() == MPI_PROC_NULL) {
+			if (parallel_handler.get_bottom() == MPI_PROC_NULL) {
 				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
 					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
 						for (int iz = -1; iz >= -2; --iz) {
@@ -404,7 +431,16 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, -2, spatial_grid);
+				// assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, -2, spatial_grid);
+				i_buff = 0;
+				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
+					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
+						for (int iz = 0; iz < 2; iz++) {
+							current_fluid.fluid_data[i_field](ix, iy, iz) = buff_recv_z[i_buff];
+							i_buff++;
+						}
+					}
+				}
 			}
 
 			// upper z boundary
@@ -433,7 +469,7 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 			             &status);
 
 			// Finally, assign data - either directly or from receive buffer
-			if (parallel_handler.get_back() == MPI_PROC_NULL) {
+			if (parallel_handler.get_top() == MPI_PROC_NULL) {
 				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
 					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
 						for (int iz = spatial_grid.get_num_cells(2); iz < spatial_grid.get_num_cells(2) + 2; ++iz) {
@@ -442,7 +478,16 @@ void finite_volume_solver::apply_boundary_conditions(grid_3D &spatial_grid, flui
 					}
 				}
 			} else {
-				assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, Nz, spatial_grid);
+				// assign_data_from_buffer(buff_recv_z, current_fluid, i_field, 0, 0, Nz, spatial_grid);
+				i_buff = 0;
+				for (int ix = 0; ix < spatial_grid.get_num_cells(0); ++ix) {
+					for (int iy = 0; iy < spatial_grid.get_num_cells(1); ++iy) {
+						for (int iz = 0; iz < 2; iz++) {
+							current_fluid.fluid_data[i_field](ix, iy, Nz + iz) = buff_recv_z[i_buff];
+							i_buff++;
+						}
+					}
+				}
 			}
 
 			// std::cout << "Rank " << rank << " has finished applying boundary conditions\n";

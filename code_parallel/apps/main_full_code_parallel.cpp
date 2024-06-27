@@ -89,9 +89,12 @@ int main(int argc, char *argv[]) {
 	bound_up[2] = 0.5;
 
 	std::vector<int> num_cells(3);
-	num_cells[0] = 128;
-	num_cells[1] = 128;
-	num_cells[2] = 128;
+	// num_cells[0] = 128;
+	// num_cells[1] = 128;
+	// num_cells[2] = 128;
+	num_cells[0] = 16;
+	num_cells[1] = 16;
+	num_cells[2] = 16;
 
 
 	std::vector<int> tasks(3);
@@ -99,8 +102,8 @@ int main(int argc, char *argv[]) {
 	// tasks[1] = 2;
 	// tasks[2] = 2;
 	tasks[0] = 2;
-	tasks[1] = 1;
-	tasks[2] = 1;
+	tasks[1] = 2;
+	tasks[2] = 2;
 
 	// Start the MPI handler
 	mpi_handler parallel_stuff(tasks);
@@ -142,9 +145,6 @@ int main(int argc, char *argv[]) {
 		std::cout << " Volume of Sedov region: " << Sedov_volume << " in " << num_Sedov_cells << " cells\n";
 	}
 
-	// MPI_Finalize();
-	// return 0;
-
 	std::cout << "Rank: " << parallel_stuff.get_rank() << " is now creating the fluid\n";
 
 	// Now, I will create a HD fluid
@@ -161,8 +161,8 @@ int main(int argc, char *argv[]) {
 	double dt_out = 0.005;
 
 	solver_parallel.run(local_grid, hd_fluid, t_final, dt_out);
-	// std::cout << "Rank: " << parallel_stuff.get_rank() << " says So long, and thanks for all the fish! 🐬\n";
-	std::cout << "Rank: " << parallel_stuff.get_rank() << " says So long, and thanks for all the fish!\n";
+	std::cout << "Rank: " << parallel_stuff.get_rank() << " says So long, and thanks for all the fish! 🐬\n";
+	// std::cout << "Rank: " << parallel_stuff.get_rank() << " says So long, and thanks for all the fish!\n";
 
 	MPI_Finalize();
 	return 0;

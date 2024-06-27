@@ -7,7 +7,7 @@
 # Redirect output stream to this file
 #SBATCH --output=output_parallel.log
 # Maximum number of tasks (=processes) to start in total
-#SBATCH --ntasks=2
+#SBATCH --ntasks=8
 # Maximum number of tasks (=processes) to start per node
 # #SBATCH --ntasks-per-node=8
 # Enforce exclusive node allocation, do not share with other jobs
